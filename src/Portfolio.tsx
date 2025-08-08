@@ -4,7 +4,7 @@ import { Github, Youtube, Star, GitBranch, ExternalLink, ChevronDown, Moon, Sun,
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [isScrolled, setIsScrolled] = useState(false);
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState('light');
   const [activeHackathonFilter, setActiveHackathonFilter] = useState('all');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -24,7 +24,7 @@ const Portfolio = () => {
   const hackathons = [
     {
       title: "Straighty Web",
-      category: "wellness",
+      category: "ai",
       featured: true,
       achievements: [
         "🌍 hackathon.dev 2025 Winner - World's Largest Hackathon",
@@ -37,7 +37,7 @@ const Portfolio = () => {
     },
     {
       title: "Straighty",
-      category: "wellness",
+      category: "ai",
       featured: true,
       achievements: [
         "🏆 HackYeah 2024 Winner - Wellness & Fitness",
@@ -63,7 +63,7 @@ const Portfolio = () => {
     },
     {
       title: "FitBet / QuantumFit / Gradatrim",
-      category: "fitness",
+      category: "ai",
       featured: true,
       achievements: [
         "🥇 1st place QuantumGains at LabLab.ai",
@@ -145,7 +145,7 @@ const Portfolio = () => {
   },
   {
     title: "Wolon 3.0",
-    category: "other",
+    category: "blockchain",
     achievements: ["🏆 ETHGlobal Hackathon Winner"],
     description: "Next-generation volunteer coordination platform",
     link: "https://ethglobal.com/showcase/wolon-3-0-mfsx8",
@@ -153,7 +153,7 @@ const Portfolio = () => {
   },
   {
     title: "Quantum Gains",
-    category: "fitness",
+    category: "ai",
     achievements: ["🥇 1st place at LabLab.ai Multimodal Hackathon"],
     description: "AI-powered fitness optimization platform",
     link: "https://lablab.ai/event/multimodal-hackathon/quantumgainforge/quantumgains",
@@ -161,7 +161,7 @@ const Portfolio = () => {
   },
   {
     title: "QuantumFit",
-    category: "fitness",
+    category: "ai",
     achievements: ["🥇 1st place at Gemini AI Hackathon"],
     description: "Personal fitness assistant powered by Gemini AI",
     link: "https://lablab.ai/event/gemini-ai-hackathon/quantumfit-labs/quantumfit",
@@ -213,7 +213,7 @@ const Portfolio = () => {
     {
       title: "Straighty",
       description: "Professional habit tracking app that helps users build consistent routines. Features clean UI, analytics, and motivational streaks system.",
-      type: "product",
+      type: "AI/ML",
       featured: true,
       link: "https://straighty.app",
       language: "Swift",
@@ -241,7 +241,7 @@ const Portfolio = () => {
     {
       title: "Gradatrim",
       description: "Innovative iOS fitness app combining AI-powered coaching with real-time form analysis for personalized workout guidance.",
-      type: "fitness",
+      type: "mobile",
       featured: true,
       language: "Swift",
       github: "https://github.com/The-Sloths/Gradatrim"
@@ -249,7 +249,7 @@ const Portfolio = () => {
     {
       title: "BUN-HTMX-Full-Stack-Template",
       description: "Production-ready full stack template combining HTMX, Server Side Components, SQLite, and Bun runtime. Used by developers worldwide.",
-      type: "template",
+      type: "backend",
       stars: 10,
       forks: 3,
       language: "TypeScript",
@@ -258,7 +258,7 @@ const Portfolio = () => {
     {
       title: "NEM-API",
       description: "Boilerplate code for REST API that can be implemented in various projects. Features JWT authentication and comprehensive testing.",
-      type: "template",
+      type: "backend",
       stars: 1,
       language: "JavaScript",
       github: "https://github.com/LachPawel/NEM-API"
@@ -266,7 +266,7 @@ const Portfolio = () => {
     {
       title: "Dziknik",
       description: "Web application for fitness enthusiasts to create, share, and follow training plans. Perfect for beginners and experienced athletes.",
-      type: "fitness",
+      type: "backend",
       stars: 1,
       forks: 1,
       language: "TypeScript",
@@ -284,7 +284,7 @@ const Portfolio = () => {
     {
       title: "QuantumFit API",
       description: "Node.js/TypeScript backend with Python microservices implementing TruLens-powered LLM prompt evaluations for AI-driven fitness.",
-      type: "backend",
+      type: "AI/ML",
       stars: 1,
       language: "Python/TypeScript",
       github: "https://github.com/LachPawel/QuantumFit-Gemini-Vertex"
@@ -292,7 +292,7 @@ const Portfolio = () => {
     {
       title: "QuantumFit Mobile",
       description: "Revolutionary React Native fitness app using AI to help users physically become better versions of themselves.",
-      type: "fitness",
+      type: "mobile",
       stars: 1,
       language: "TypeScript - React Native",
       github: "https://github.com/LachPawel/QuantumFit"
@@ -308,7 +308,7 @@ const Portfolio = () => {
     {
       title: "RISC Zero Examples",
       description: "Zero-knowledge proofs based on RISC Zero with multiple example implementations across different branches.",
-      type: "security",
+      type: "blockchain",
       forks: 1,
       language: "Rust",
       github: "https://github.com/LachPawel/RISC-Zero-Prover-Verifier"
@@ -316,7 +316,7 @@ const Portfolio = () => {
     {
       title: "Arduino RC Car",
       description: "DIY remote-controlled car built with Arduino. Complete tutorial with 15k+ views on dev.to helping makers build their own.",
-      type: "hardware",
+      type: "robotics",
       language: "C++/Java",
       github: "https://dev.to/pawel/how-to-build-your-own-rc-car-with-arduino-arducar-12ei"
     }
@@ -656,7 +656,7 @@ const Portfolio = () => {
               </div>
               
               <div className="flex flex-wrap justify-center sm:justify-start gap-2">
-                {['all', 'featured', 'wellness', 'blockchain', 'ai', 'robotics', 'fitness'].map((filter) => (
+                {['all', 'featured', 'ai', 'robotics', 'blockchain'].map((filter) => (
                   <button
                     key={filter}
                     onClick={() => setActiveHackathonFilter(filter)}
@@ -670,7 +670,7 @@ const Portfolio = () => {
                           : 'text-gray-600 hover:text-gray-900'
                     }`}
                   >
-                    {filter.charAt(0).toUpperCase() + filter.slice(1)}
+                    {filter === "ai" ? "AI/ML" : filter.charAt(0).toUpperCase() + filter.slice(1)}
                   </button>
                 ))}
               </div>
@@ -794,7 +794,7 @@ const Portfolio = () => {
               <ul className={`space-y-2 ${isDark ? 'text-gray-400' : 'text-gray-600'} text-xs sm:text-sm`}>
                 <li className="flex items-center gap-2">
                   <Users size={14} />
-                  Active supporter of Founder Running Club Warsaw
+                  Active supporter of Node.js Warsaw & Founder Running Club Warsaw
                 </li>
                 <li className="flex items-center gap-2">
                   <Mic size={14} />
@@ -806,7 +806,7 @@ const Portfolio = () => {
                 </li>
                 <li className="flex items-center gap-2">
                   <Code size={14} />
-                  Former University Lecturer in Computer Science
+                  Former University Lecturer
                 </li>
               </ul>
             </div>
@@ -820,12 +820,12 @@ const Portfolio = () => {
               <div className="text-center sm:text-left">
                 <h2 className="text-2xl sm:text-3xl font-bold mb-2">Projects</h2>
                 <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-sm sm:text-base`}>
-                  From web apps to robotics, AI/ML to computer vision
+                  From Web Apps, Mobile, Robotics, AI/ML to Computer vision
                 </p>
               </div>
               
               <div className="flex flex-wrap justify-center sm:justify-start gap-2">
-                {['all', 'product', 'robotics', 'fitness', 'backend', 'blockchain', 'template'].map((filter) => (
+                {['all', 'mobile', 'AI/ML', 'robotics', 'backend', 'blockchain'].map((filter) => (
                   <button
                     key={filter}
                     onClick={() => setActiveFilter(filter)}
@@ -973,7 +973,7 @@ const Portfolio = () => {
             <div className="mb-8 sm:mb-12 text-center sm:text-left">
               <h2 className="text-2xl sm:text-3xl font-bold mb-2">Career Highlights</h2>
               <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-sm sm:text-base`}>
-                Working at the intersection of data, AI, and blockchain
+                Working at the intersection of Data, AI, and Web Development
               </p>
             </div>
             
@@ -986,7 +986,7 @@ const Portfolio = () => {
                   <div className="flex-1">
                     <h3 className="text-base sm:text-lg font-semibold">ING</h3>
                     <p className={`text-xs sm:text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                      Senior Software Engineer • Jul 2024 - Present
+                      Senior Software Engineer
                     </p>
                     <p className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
                       Poland • Hybrid
@@ -1018,10 +1018,10 @@ const Portfolio = () => {
                   <div className="flex-1">
                     <h3 className="text-base sm:text-lg font-semibold">MicroStrategy (Strategy)</h3>
                     <p className={`text-xs sm:text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                      Software Engineer • Oct 2021 - Feb 2024
+                      Software Engineer
                     </p>
                     <p className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
-                      Warsaw, Poland • 2 yrs 5 mos
+                    Poland • Hybrid
                     </p>
                   </div>
                 </div>
