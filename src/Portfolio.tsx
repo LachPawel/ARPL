@@ -1,15 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Github, Youtube, Star, GitBranch, ExternalLink, ChevronDown, Moon, Sun, FileText, Mail, Linkedin, ArrowRight, Calendar, MapPin, Briefcase, Trophy, Users, Mic, Award, Zap, Code, Cpu, Globe } from 'lucide-react';
-
-
-// TODO!!!!!!
-
-// To use a custom favicon file instead of the inline SVG:
-// 1. Create a favicon.ico or favicon.svg file with your logo
-// 2. Place it in the public folder of your Vite project
-// 3. Add this to your index.html in the <head> section:
-//    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-// 4. Remove the favicon creation code from the useEffect below
+import { useState, useEffect } from 'react';
+import { Github, Youtube, Star, GitBranch, ExternalLink, ChevronDown, Moon, Sun, FileText, Mail, Linkedin, ArrowRight, MapPin, Briefcase, Trophy, Users, Mic, Award, Zap, Code, Globe } from 'lucide-react';
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -24,32 +14,6 @@ const Portfolio = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    // Set favicon and page title
-    document.title = 'Pawel Lach - ARPL | Software Engineer & Educator';
-    
-    // Create and set favicon with ARPL branding
-    const favicon = document.querySelector("link[rel*='icon']") || document.createElement('link');
-    favicon.type = 'image/svg+xml';
-    favicon.rel = 'icon';
-    favicon.href = 'data:image/svg+xml;base64,' + btoa(`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-        <defs>
-          <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
-            <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
-          </linearGradient>
-        </defs>
-        <rect width="32" height="32" rx="6" fill="url(#grad)"/>
-        <text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" 
-              font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="900" fill="white">
-          PL
-        </text>
-      </svg>
-    `);
-    document.head.appendChild(favicon);
   }, []);
 
   const toggleTheme = () => {
@@ -699,7 +663,7 @@ const Portfolio = () => {
                         {hackathon.title}
                       </h3>
                       {(hackathon.link || hackathon.video) && (
-                        <a href={hackathon.link || hackathon.video} target="_blank" rel="noopener noreferrer" 
+                        <a href={hackathon.link || hackathon.video || ''} target="_blank" rel="noopener noreferrer" 
                            className={`${isDark ? 'text-gray-400 hover:text-gray-300' : 'text-gray-400 hover:text-gray-600'} transition-colors`}>
                           <ExternalLink size={16} />
                         </a>
@@ -877,7 +841,7 @@ const Portfolio = () => {
                       </div>
                       
                       <div className={`flex items-center gap-3 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
-                        {project.stars > 0 && (
+                        {project.stars && project.stars > 0 && (
                           <span className="flex items-center gap-1">
                             <Star size={14} />
                             {project.stars}
