@@ -1,7 +1,6 @@
 {
   "name": "arpl-portfolio",
   "version": "1.0.0",
-  "homepage": ".",
   "description": "Pawel Lach's Portfolio - Software Engineer, Educator, Content Creator",
   "private": true,
   "type": "module",
