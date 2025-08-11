@@ -507,8 +507,8 @@ const Portfolio = () => {
         </nav>
 
         {/* Hero Section */}
-        <section className="min-h-screen flex items-center px-4 sm:px-6 pt-16 sm:pt-20 relative">
-          <div className="max-w-6xl mx-auto w-full">
+        <section className="min-h-screen flex flex-col justify-center px-4 sm:px-6 pt-16 sm:pt-20 relative">
+          <div className="max-w-6xl mx-auto w-full flex-1 flex flex-col justify-center">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               <div className="space-y-4 sm:space-y-6">
                 <div className="space-y-3 sm:space-y-4">
@@ -633,7 +633,7 @@ const Portfolio = () => {
           
           <button
             onClick={() => document.getElementById('hackathons')?.scrollIntoView({ behavior: 'smooth' })}
-            className={`absolute bottom-2 sm:bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer ${isDark ? 'text-gray-600 hover:text-gray-400' : 'text-gray-400 hover:text-gray-600'} transition-colors`}
+            className={`mx-auto mb-4 sm:mb-24 animate-bounce cursor-pointer ${isDark ? 'text-gray-600 hover:text-gray-400' : 'text-gray-400 hover:text-gray-600'} transition-colors`}
             aria-label="Scroll to next section"
           >
             <ChevronDown size={20} className="sm:hidden" />
