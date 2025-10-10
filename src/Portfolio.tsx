@@ -5,7 +5,7 @@ import { motion, useScroll, AnimatePresence } from 'framer-motion';
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [isScrolled, setIsScrolled] = useState(false);
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
   const [activeHackathonFilter, setActiveHackathonFilter] = useState('all');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -433,11 +433,11 @@ const Portfolio = () => {
       isDark 
         ? 'text-white' 
         : 'bg-white text-black'
-    }`} style={isDark ? { backgroundColor: '#0a0a0a' } : {}}>
+    }`} style={isDark ? { backgroundColor: '#1e1e1e' } : {}}>
         {/* Scroll Progress Bar */}
         <motion.div 
-          className={`fixed top-0 left-0 right-0 h-1 z-50 origin-left ${isDark ? '' : 'bg-black'}`}
-          style={isDark ? { backgroundColor: '#404040', scaleX: scrollYProgress } : { scaleX: scrollYProgress }}
+          className="fixed top-0 left-0 right-0 h-1 z-50 origin-left"
+          style={{ backgroundColor: '#BADA55', scaleX: scrollYProgress }}
         />
         
         {/* Navigation */}
@@ -447,10 +447,13 @@ const Portfolio = () => {
           transition={{ duration: 0.5 }}
           className={`fixed top-0 w-full z-40 transition-all duration-300 ${
           isScrolled 
-            ? `backdrop-blur-sm border-b py-3 sm:py-4 ${isDark ? 'border-gray-800' : 'bg-white/95 border-black/20'}` 
+            ? `backdrop-blur-sm border-b py-3 sm:py-4` 
             : 'bg-transparent py-4 sm:py-6'
         }`}
-        style={isScrolled && isDark ? { backgroundColor: 'rgba(10, 10, 10, 0.95)' } : {}}>
+        style={isScrolled ? { 
+          backgroundColor: isDark ? 'rgba(30, 30, 30, 0.95)' : 'rgba(255, 255, 255, 0.95)', 
+          borderBottom: isDark ? '1px solid #333' : '1px solid #e0e0e0'
+        } : {}}>
           <div className="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between items-center">
             <div className="flex items-center space-x-2">
               <span className="text-xl sm:text-2xl font-bold">ARPL</span>
@@ -481,11 +484,19 @@ const Portfolio = () => {
               </button>
               
               <a href="mailto:pawel@arpl.dev" 
-                 className={`px-3 lg:px-4 py-2 text-sm font-medium border ${
-                   isDark 
-                     ? 'border-white hover:bg-white hover:text-black' 
-                     : 'border-black hover:bg-black hover:text-white'
-                 } transition-all`}>
+                 className="px-3 lg:px-4 py-2 text-sm font-medium transition-all"
+                 style={{
+                   border: `1px solid ${isDark ? '#BADA55' : '#BADA55'}`,
+                   color: isDark ? '#BADA55' : '#BADA55'
+                 }}
+                 onMouseEnter={(e) => {
+                   e.currentTarget.style.backgroundColor = '#BADA55';
+                   e.currentTarget.style.color = isDark ? '#1e1e1e' : '#ffffff';
+                 }}
+                 onMouseLeave={(e) => {
+                   e.currentTarget.style.backgroundColor = 'transparent';
+                   e.currentTarget.style.color = '#BADA55';
+                 }}>
                 Contact
               </a>
             </div>
@@ -518,8 +529,11 @@ const Portfolio = () => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className={`md:hidden backdrop-blur-sm border-t ${isDark ? 'border-gray-800' : 'bg-white/95 border-black/20'}`}
-              style={isDark ? { backgroundColor: 'rgba(10, 10, 10, 0.95)' } : {}}>
+              className="md:hidden backdrop-blur-sm border-t"
+              style={{ 
+                backgroundColor: isDark ? 'rgba(30, 30, 30, 0.95)' : 'rgba(255, 255, 255, 0.95)', 
+                borderTop: isDark ? '1px solid #333' : '1px solid #e0e0e0'
+              }}>
               <div className="px-4 py-4 space-y-4">
                 <div className="flex items-center justify-center space-x-6">
                   <a href="https://github.com/LachPawel" target="_blank" rel="noopener noreferrer" 
@@ -537,11 +551,19 @@ const Portfolio = () => {
                 </div>
                 <div className="text-center">
                   <a href="mailto:pawel@arpl.dev" 
-                     className={`inline-block px-4 py-2 text-sm font-medium border ${
-                       isDark 
-                         ? 'border-white hover:bg-white hover:text-black' 
-                         : 'border-black hover:bg-black hover:text-white'
-                     } transition-all`}>
+                     className="inline-block px-4 py-2 text-sm font-medium transition-all"
+                     style={{
+                       border: '1px solid #BADA55',
+                       color: '#BADA55'
+                     }}
+                     onMouseEnter={(e) => {
+                       e.currentTarget.style.backgroundColor = '#BADA55';
+                       e.currentTarget.style.color = isDark ? '#1e1e1e' : '#ffffff';
+                     }}
+                     onMouseLeave={(e) => {
+                       e.currentTarget.style.backgroundColor = 'transparent';
+                       e.currentTarget.style.color = '#BADA55';
+                     }}>
                     Contact
                   </a>
                 </div>
@@ -623,11 +645,11 @@ const Portfolio = () => {
                     href="#hackathons"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className={`px-4 sm:px-6 py-3 text-center ${
-                       isDark 
-                         ? 'bg-white text-black hover:bg-gray-200' 
-                         : 'bg-black text-white hover:bg-gray-800'
-                     } font-medium transition-colors text-sm sm:text-base`}
+                    className="px-4 sm:px-6 py-3 text-center font-medium transition-colors text-sm sm:text-base"
+                    style={{
+                      backgroundColor: '#BADA55',
+                      color: isDark ? '#1e1e1e' : '#ffffff'
+                    }}
                   >
                     View Achievements
                   </motion.a>
@@ -637,12 +659,13 @@ const Portfolio = () => {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className={`px-4 sm:px-6 py-3 text-center border font-medium transition-colors text-sm sm:text-base ${
-                       isDark 
-                         ? 'border-gray-700 hover:bg-gray-800' 
-                         : 'border-black hover:bg-black/5'
-                    }`}
-                    style={isDark ? { backgroundColor: '#0a0a0a' } : {}}
+                    className="px-4 sm:px-6 py-3 text-center font-medium transition-colors text-sm sm:text-base"
+                    style={{ 
+                      backgroundColor: isDark ? '#1f1f1f' : '#f5f5f5', 
+                      borderColor: '#BADA55', 
+                      color: '#BADA55',
+                      border: '1px solid #BADA55'
+                    }}
                   >
                     GitHub Profile
                   </motion.a>
@@ -664,7 +687,8 @@ const Portfolio = () => {
                     <h3 className={`text-xs sm:text-sm font-semibold ${isDark ? 'text-gray-500' : 'text-gray-500'} uppercase tracking-wider mb-3 sm:mb-4`}>
                       Philosophy
                     </h3>
-                    <blockquote className={`text-base sm:text-lg italic ${isDark ? 'text-gray-400' : 'text-gray-700'} border-l-4 ${isDark ? 'border-gray-700' : 'border-black/20'} pl-4 mb-4`}>
+                    <blockquote className={`text-base sm:text-lg italic ${isDark ? 'text-gray-400' : 'text-gray-700'} border-l-4 pl-4 mb-4`}
+                    style={{ borderColor: '#BADA55' }}>
                       "Act, Reflect, Persist, Learn"
                     </blockquote>
                     <p className={`${isDark ? 'text-gray-500' : 'text-gray-600'} text-sm sm:text-base`}>
@@ -686,7 +710,12 @@ const Portfolio = () => {
                         {techStack.frontend.map((tech, idx) => (
                           <span 
                             key={idx}
-                            className={`px-2 py-1 text-xs ${isDark ? 'bg-gray-800 text-gray-400' : 'bg-black/5 text-gray-700'} rounded`}
+                            className="px-2 py-1 text-xs rounded"
+                            style={{ 
+                              backgroundColor: isDark ? '#1f1f1f' : '#f5f5f5', 
+                              color: '#BADA55', 
+                              border: isDark ? '1px solid #333' : '1px solid #e0e0e0'
+                            }}
                           >
                             {tech}
                           </span>
@@ -696,7 +725,12 @@ const Portfolio = () => {
                         {techStack.backend.map((tech, idx) => (
                           <span 
                             key={idx}
-                            className={`px-2 py-1 text-xs ${isDark ? 'bg-gray-800 text-gray-400' : 'bg-black/5 text-gray-700'} rounded`}
+                            className="px-2 py-1 text-xs rounded"
+                            style={{ 
+                              backgroundColor: isDark ? '#1f1f1f' : '#f5f5f5', 
+                              color: '#BADA55', 
+                              border: isDark ? '1px solid #333' : '1px solid #e0e0e0'
+                            }}
                           >
                             {tech}
                           </span>
@@ -759,7 +793,7 @@ const Portfolio = () => {
         </section>
 
         {/* Hackathon Victories Section */}
-        <section id="hackathons" className={`py-16 sm:py-20 lg:py-24 px-4 sm:px-6 ${isDark ? '' : 'bg-black/5'}`} style={isDark ? { backgroundColor: '#151515' } : {}}>
+        <section id="hackathons" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6" style={{ backgroundColor: isDark ? '#1f1f1f' : '#f5f5f5' }}>
           <div className="max-w-6xl mx-auto">
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
@@ -783,15 +817,23 @@ const Portfolio = () => {
                   <button
                     key={filter}
                     onClick={() => setActiveHackathonFilter(filter)}
-                    className={`px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium transition-all ${
-                      activeHackathonFilter === filter 
-                        ? isDark 
-                          ? 'bg-white text-black' 
-                          : 'bg-black text-white'
-                        : isDark 
-                          ? 'text-gray-500 hover:text-white' 
-                          : 'text-gray-600 hover:text-black'
-                    }`}
+                    className="px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium transition-all"
+                    style={activeHackathonFilter === filter ? {
+                      backgroundColor: '#BADA55',
+                      color: isDark ? '#1e1e1e' : '#ffffff'
+                    } : {
+                      color: isDark ? '#888' : '#666'
+                    }}
+                    onMouseEnter={(e) => {
+                      if (activeHackathonFilter !== filter) {
+                        e.currentTarget.style.color = isDark ? '#ffffff' : '#000000';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (activeHackathonFilter !== filter) {
+                        e.currentTarget.style.color = isDark ? '#888' : '#666';
+                      }
+                    }}
                   >
                     {filter === "ai" ? "AI/ML" : filter.charAt(0).toUpperCase() + filter.slice(1)}
                   </button>
@@ -807,11 +849,17 @@ const Portfolio = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className={`${isDark ? 'bg-white/5 border-white/10 hover:border-white/20' : 'bg-black/5 border-black/10 hover:border-black/20'} border transition-colors`}
+                  className="border transition-colors"
+                  style={{ 
+                    backgroundColor: isDark ? '#1e1e1e' : '#ffffff',
+                    borderColor: '#333'
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.borderColor = '#BADA55'}
+                  onMouseLeave={(e) => e.currentTarget.style.borderColor = '#333'}
                 >
                   <div className="p-4 sm:p-6">
                     {hackathon.featured && (
-                      <div className={`text-xs font-semibold ${isDark ? 'text-gray-500' : 'text-gray-500'} uppercase tracking-wider mb-3`}>
+                      <div className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: '#BADA55' }}>
                         Featured
                       </div>
                     )}
@@ -875,7 +923,13 @@ const Portfolio = () => {
             
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
               {speakingEngagements.map((engagement, index) => (
-                <div key={index} className={`border ${isDark ? 'border-gray-800 hover:border-gray-700' : 'border-black/10 hover:border-black/20'} p-4 sm:p-6 transition-colors`}>
+                <div key={index} className="border p-4 sm:p-6 transition-colors"
+                style={{ 
+                  backgroundColor: isDark ? '#1e1e1e' : '#ffffff',
+                  borderColor: '#333' 
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.borderColor = '#BADA55'}
+                onMouseLeave={(e) => e.currentTarget.style.borderColor = '#333'}>
                   <div className="flex items-center justify-between mb-3">
                     <span className={`text-xs font-semibold ${isDark ? 'text-gray-500' : 'text-gray-500'} uppercase tracking-wider`}>
                       {engagement.type}
@@ -909,7 +963,7 @@ const Portfolio = () => {
               ))}
             </div>
 
-            <div className={`${isDark ? '' : 'bg-black/5'} p-4 sm:p-6`} style={isDark ? { backgroundColor: '#0a0a0a' } : {}}>
+            <div className="p-4 sm:p-6" style={{ backgroundColor: isDark ? '#1f1f1f' : '#f5f5f5' }}>
               <h3 className="font-semibold mb-4 text-sm sm:text-base">Community Involvement</h3>
               <ul className={`space-y-2 ${isDark ? 'text-gray-500' : 'text-gray-600'} text-xs sm:text-sm`}>
                 <li className="flex items-start gap-2">
@@ -934,7 +988,7 @@ const Portfolio = () => {
         </section>
 
         {/* Projects Section */}
-        <section id="projects" className={`py-16 sm:py-20 lg:py-24 px-4 sm:px-6 ${isDark ? '' : 'bg-black/5'}`} style={isDark ? { backgroundColor: '#151515' } : {}}>
+        <section id="projects" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6" style={{ backgroundColor: isDark ? '#1f1f1f' : '#f5f5f5' }}>
           <div className="max-w-6xl mx-auto">
             <div className="flex flex-col gap-6 sm:gap-8 mb-8 sm:mb-12">
               <div className="text-center sm:text-left">
@@ -949,15 +1003,23 @@ const Portfolio = () => {
                   <button
                     key={filter}
                     onClick={() => setActiveFilter(filter)}
-                    className={`px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium transition-all ${
-                      activeFilter === filter 
-                        ? isDark 
-                          ? 'bg-white text-black' 
-                          : 'bg-black text-white'
-                        : isDark 
-                          ? 'text-gray-500 hover:text-white' 
-                          : 'text-gray-600 hover:text-black'
-                    }`}
+                    className="px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium transition-all"
+                    style={activeFilter === filter ? {
+                      backgroundColor: '#BADA55',
+                      color: isDark ? '#1e1e1e' : '#ffffff'
+                    } : {
+                      color: isDark ? '#888' : '#666'
+                    }}
+                    onMouseEnter={(e) => {
+                      if (activeFilter !== filter) {
+                        e.currentTarget.style.color = isDark ? '#ffffff' : '#000000';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (activeFilter !== filter) {
+                        e.currentTarget.style.color = isDark ? '#888' : '#666';
+                      }
+                    }}
                   >
                     {filter.charAt(0).toUpperCase() + filter.slice(1)}
                   </button>
@@ -967,10 +1029,16 @@ const Portfolio = () => {
             
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {filterProjects().map((project, index) => (
-                <div key={index} className={`${isDark ? 'bg-white/5 border-white/10 hover:border-white/20' : 'bg-black/5 border-black/10 hover:border-black/20'} border transition-colors`}>
+                <div key={index} className="border transition-colors"
+                style={{ 
+                  backgroundColor: isDark ? '#1e1e1e' : '#ffffff',
+                  borderColor: '#333'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.borderColor = '#BADA55'}
+                onMouseLeave={(e) => e.currentTarget.style.borderColor = '#333'}>
                   <div className="p-4 sm:p-6">
                     {project.featured && (
-                      <div className={`text-xs font-semibold ${isDark ? 'text-gray-500' : 'text-gray-500'} uppercase tracking-wider mb-3`}>
+                      <div className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: '#BADA55' }}>
                         Featured
                       </div>
                     )}
@@ -1032,7 +1100,13 @@ const Portfolio = () => {
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
               {content.map((item, index) => (
                 <a key={index} href={item.link} target="_blank" rel="noopener noreferrer" 
-                   className={`group border ${isDark ? 'border-white/10 hover:border-white/20' : 'border-black/10 hover:border-black/20'} p-4 sm:p-6 transition-colors`}>
+                   className="group border p-4 sm:p-6 transition-colors"
+                   style={{ 
+                     backgroundColor: isDark ? '#1e1e1e' : '#ffffff',
+                     borderColor: '#333'
+                   }}
+                   onMouseEnter={(e) => e.currentTarget.style.borderColor = '#BADA55'}
+                   onMouseLeave={(e) => e.currentTarget.style.borderColor = '#333'}>
                   <div className="flex items-center justify-between mb-3">
                     <span className={`text-xs font-semibold ${isDark ? 'text-gray-500' : 'text-gray-500'} uppercase tracking-wider`}>
                       {item.platform}
@@ -1055,38 +1129,38 @@ const Portfolio = () => {
             
             <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
               <a href="https://youtube.com/@arplearn" target="_blank" rel="noopener noreferrer" 
-                 className={`inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 ${
-                   isDark 
-                     ? 'bg-gray-100 text-gray-900' 
-                     : 'bg-gray-900 text-white'
-                 } font-medium hover:opacity-90 transition-opacity text-sm sm:text-base`}>
+                 className="inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 font-medium hover:opacity-90 transition-opacity text-sm sm:text-base"
+                 style={{ backgroundColor: '#BADA55', color: isDark ? '#1e1e1e' : '#ffffff' }}>
                 YouTube Channel
                 <ArrowRight size={14} />
               </a>
               <a href="https://dev.to/pawel" target="_blank" rel="noopener noreferrer" 
-                 className={`inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 border ${
-                   isDark 
-                     ? 'border-gray-100 hover:bg-gray-800' 
-                     : 'border-gray-900 hover:bg-gray-50'
-                 } font-medium transition-colors text-sm sm:text-base`}>
+                 className="inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 font-medium transition-colors text-sm sm:text-base"
+                 style={{ 
+                   border: '1px solid #BADA55',
+                   color: '#BADA55',
+                   backgroundColor: 'transparent'
+                 }}
+                 onMouseEnter={(e) => e.currentTarget.style.backgroundColor = isDark ? '#1f1f1f' : '#f5f5f5'}
+                 onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}>
                 dev.to Articles
                 <ArrowRight size={14} />
               </a>
               <a href="https://straighty.app" target="_blank" rel="noopener noreferrer" 
-                 className={`inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 border ${
-                   isDark 
-                     ? 'border-gray-100 hover:bg-gray-800' 
-                     : 'border-gray-900 hover:bg-gray-50'
-                 } font-medium transition-colors text-sm sm:text-base`}>
+                 className="inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 font-medium transition-colors text-sm sm:text-base"
+                 style={{ 
+                   border: '1px solid #BADA55',
+                   color: '#BADA55',
+                   backgroundColor: 'transparent'
+                 }}
+                 onMouseEnter={(e) => e.currentTarget.style.backgroundColor = isDark ? '#1f1f1f' : '#f5f5f5'}
+                 onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}>
                 Try Straighty.app
                 <ArrowRight size={14} />
               </a>
               <a href="https://zero-g.app" target="_blank" rel="noopener noreferrer" 
-                 className={`inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 ${
-                   isDark 
-                     ? 'bg-gray-100 text-gray-900' 
-                     : 'bg-gray-900 text-white'
-                 } font-medium hover:opacity-90 transition-opacity text-sm sm:text-base`}>
+                 className="inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 font-medium hover:opacity-90 transition-opacity text-sm sm:text-base"
+                 style={{ backgroundColor: '#BADA55', color: isDark ? '#1e1e1e' : '#ffffff' }}>
                 Try Zero-G.app
                 <ArrowRight size={14} />
               </a>
@@ -1095,7 +1169,7 @@ const Portfolio = () => {
         </section>
 
         {/* Career Highlights Section */}
-        <section className={`py-16 sm:py-20 lg:py-24 px-4 sm:px-6 ${isDark ? 'bg-gray-800/50' : 'bg-gray-50'}`}>
+        <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6" style={{ backgroundColor: isDark ? '#1f1f1f' : '#f5f5f5' }}>
           <div className="max-w-6xl mx-auto">
             <div className="mb-8 sm:mb-12 text-center sm:text-left">
               <h2 className="text-2xl sm:text-3xl font-bold mb-2">Career Highlights</h2>
@@ -1105,8 +1179,13 @@ const Portfolio = () => {
             </div>
             
             <div className="grid lg:grid-cols-2 gap-6 sm:gap-8">
-              <div className={`border p-4 sm:p-6 ${isDark ? 'border-gray-800' : 'bg-black/5 border-black/10'}`} 
-              style={isDark ? { backgroundColor: '#0a0a0a' } : {}}>
+              <div className="border p-4 sm:p-6" 
+              style={{ 
+                backgroundColor: isDark ? '#1e1e1e' : '#ffffff',
+                borderColor: '#333'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.borderColor = '#BADA55'}
+              onMouseLeave={(e) => e.currentTarget.style.borderColor = '#333'}>
                 <div className="flex items-start gap-4 mb-4">
                   <div className={`p-3 ${isDark ? 'bg-white/10' : 'bg-black/10'}`}>
                     <Briefcase className={isDark ? 'text-gray-500' : 'text-gray-600'} size={20} />
@@ -1138,7 +1217,13 @@ const Portfolio = () => {
                 </div>
               </div>
 
-              <div className={`${isDark ? 'bg-white/5 border-white/10' : 'bg-black/5 border-black/10'} border p-4 sm:p-6`}>
+              <div className="border p-4 sm:p-6"
+              style={{ 
+                backgroundColor: isDark ? '#1e1e1e' : '#ffffff',
+                borderColor: '#333'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.borderColor = '#BADA55'}
+              onMouseLeave={(e) => e.currentTarget.style.borderColor = '#333'}>
                 <div className="flex items-start gap-4 mb-4">
                   <div className={`p-3 ${isDark ? 'bg-white/10' : 'bg-black/10'}`}>
                     <Zap className={isDark ? 'text-gray-500' : 'text-gray-600'} size={20} />
