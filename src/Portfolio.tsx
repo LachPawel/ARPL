@@ -26,6 +26,20 @@ const Portfolio = () => {
 
   const hackathons = [
     {
+      title: "Spindra",
+      category: "ai",
+      featured: true,
+      achievements: [
+        "AI-Powered Tennis Training App",
+        "Real-time pose estimation with Apple Vision",
+        "AR Tennis Experience with 3D models",
+        "ElevenLabs AI voice coaching integration"
+      ],
+      description: "Revolutionary iOS tennis training app combining computer vision, AR, and AI voice coaching. Features real-time swing analysis, biomechanical feedback, and immersive AR tennis environment.",
+      link: null,
+      video: "https://youtu.be/A4HixCZWekA"
+    },
+    {
       title: "Zero-G",
       category: "ai",
       featured: true,
@@ -227,6 +241,14 @@ const Portfolio = () => {
   ];
 
   const projects = [
+    {
+      title: "Spindra",
+      description: "AI-powered tennis training app with real-time pose estimation, AR tennis experience, and ElevenLabs voice coaching. Features swing analysis, challenge system, and leaderboards.",
+      type: "mobile",
+      featured: true,
+      link: "https://youtu.be/A4HixCZWekA",
+      language: "Swift",
+    },
     {
       title: "Zero-G",
       description: "Space-themed fitness app with AI voice coach, camera-based rep counting, and daily AI-generated missions. Received ElevenLabs grant for immersive voice technology.",
