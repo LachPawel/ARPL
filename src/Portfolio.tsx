@@ -37,7 +37,8 @@ const Portfolio = () => {
       ],
       description: "Revolutionary iOS tennis training app combining computer vision, AR, and AI voice coaching. Features real-time swing analysis, biomechanical feedback, and immersive AR tennis environment.",
       link: null,
-      video: "https://youtu.be/A4HixCZWekA"
+      video: "https://youtu.be/A4HixCZWekA",
+      image: "/images/spindra.png"
     },
     {
       title: "Zero-G",
@@ -51,20 +52,8 @@ const Portfolio = () => {
       ],
       description: "Transforms workouts into space missions with AI coach, camera vision for rep counting, daily AI-generated missions, and multiplayer challenges. Built with Swift, ElevenLabs voice AI, and Apple Vision models.",
       link: "https://zero-g.app",
-      video: null
-    },
-    {
-      title: "Straighty Web",
-      category: "ai",
-      featured: true,
-      achievements: [
-        "hackathon.dev 2025 Winner - World's Largest Hackathon",
-        "Selected among 60 finalists from 10,000+ projects",
-        "Global competition victory"
-      ],
-      description: "Web version of the AI-powered habit tracking app that won the world's largest hackathon",
-      link: "https://devpost.com/software/straighty",
-      video: null
+      video: null,
+      image: "/images/zerog.png"
     },
     {
       title: "Straighty",
@@ -79,6 +68,20 @@ const Portfolio = () => {
       ],
       description: "AI-powered habit tracking app with remarkable success across multiple platforms",
       link: "https://straighty.app",
+      video: null,
+      image: "/images/straighty.png"
+    },
+    {
+      title: "Straighty Web",
+      category: "ai",
+      featured: true,
+      achievements: [
+        "hackathon.dev 2025 Winner - World's Largest Hackathon",
+        "Selected among 60 finalists from 10,000+ projects",
+        "Global competition victory"
+      ],
+      description: "Web version of the AI-powered habit tracking app that won the world's largest hackathon",
+      link: "https://devpost.com/software/straighty",
       video: null
     },
     {
@@ -190,14 +193,14 @@ const Portfolio = () => {
     link: "https://lablab.ai/event/multimodal-hackathon/quantumgainforge/quantumgains",
     video: null
   },
-  {
-    title: "QuantumFit",
-    category: "ai",
-    achievements: ["1st place at Gemini AI Hackathon"],
-    description: "Personal fitness assistant powered by Gemini AI",
-    link: "https://lablab.ai/event/gemini-ai-hackathon/quantumfit-labs/quantumfit",
-    video: null
-  }
+  // {
+  //   title: "QuantumFit",
+  //   category: "ai",
+  //   achievements: ["1st place at Gemini AI Hackathon"],
+  //   description: "Personal fitness assistant powered by Gemini AI",
+  //   link: "https://lablab.ai/event/gemini-ai-hackathon/quantumfit-labs/quantumfit",
+  //   video: null
+  // }
   ];
 
   const speakingEngagements = [
@@ -248,6 +251,7 @@ const Portfolio = () => {
       featured: true,
       link: "https://youtu.be/A4HixCZWekA",
       language: "Swift",
+      image: "/images/spindra.png",
     },
     {
       title: "Zero-G",
@@ -256,6 +260,7 @@ const Portfolio = () => {
       featured: true,
       link: "https://zero-g.app",
       language: "Swift",
+      image: "/images/zerog.png",
     },
     {
       title: "Straighty",
@@ -264,41 +269,45 @@ const Portfolio = () => {
       featured: true,
       link: "https://straighty.app",
       language: "Swift",
+      image: "/images/straighty.png",
     },
     {
       title: "Senior Cactus AI",
       description: "Interactive robot cactus with personality using Raspberry Pi Pico, React Native, Bluetooth, and OpenAI's Realtime API for voice-controlled interactions.",
       type: "robotics",
       featured: true,
-      forks: 1,
+      // forks: 1,
       language: "TypeScript/Python",
-      github: "https://github.com/LachPawel/SenorCactus.AI"
+      github: "https://github.com/LachPawel/SenorCactus.AI",
+      image: "/images/senorcactus.png"
     },
     {
       title: "LazyDog AI Robot",
       description: "Custom WAVEGO quadruped robot enhanced with AI capabilities. Featured in multiple viral YouTube videos demonstrating robotics and AI integration.",
       type: "robotics",
-      stars: 1,
-      forks: 1,
+      // stars: 1,
+      // forks: 1,
       featured: true,
       link: "https://github.com/LachPawel/lazydog",
       language: "Python",
-      github: "https://github.com/LachPawel/lazydog"
+      github: "https://github.com/LachPawel/lazydog",
+      image: "/images/lazydog.png"
     },
     {
-      title: "Gradatrim",
-      description: "Innovative iOS fitness app combining AI-powered coaching with real-time form analysis for personalized workout guidance.",
-      type: "mobile",
+      title: "Arduino RC Car",
+      description: "DIY remote-controlled car built with Arduino. Complete tutorial with 15k+ views on dev.to helping makers build their own.",
+      type: "robotics",
       featured: true,
-      language: "Swift",
-      github: "https://github.com/The-Sloths/Gradatrim"
+      language: "C++/Java",
+      github: "https://dev.to/pawel/how-to-build-your-own-rc-car-with-arduino-arducar-12ei",
+      image: "/images/arducar.png"
     },
     {
       title: "BUN-HTMX-Full-Stack-Template",
       description: "Production-ready full stack template combining HTMX, Server Side Components, SQLite, and Bun runtime. Used by developers worldwide.",
       type: "backend",
-      stars: 10,
-      forks: 3,
+      // stars: 10,
+      // forks: 3,
       language: "TypeScript",
       github: "https://github.com/LachPawel/BUN-HTMX-Full-Stack-App-Template"
     },
@@ -306,7 +315,7 @@ const Portfolio = () => {
       title: "NEM-API",
       description: "Boilerplate code for REST API that can be implemented in various projects. Features JWT authentication and comprehensive testing.",
       type: "backend",
-      stars: 1,
+      // stars: 1,
       language: "JavaScript",
       github: "https://github.com/LachPawel/NEM-API"
     },
@@ -314,8 +323,8 @@ const Portfolio = () => {
       title: "Dziknik",
       description: "Web application for fitness enthusiasts to create, share, and follow training plans. Perfect for beginners and experienced athletes.",
       type: "backend",
-      stars: 1,
-      forks: 1,
+      // stars: 1,
+      // forks: 1,
       language: "TypeScript",
       github: "https://github.com/LachPawel/Dziknik"
     },
@@ -323,8 +332,8 @@ const Portfolio = () => {
       title: "GitProve",
       description: "Collaborative hub where IT enthusiasts build, showcase, and evolve. Community-driven projects for amplifying tech journeys.",
       type: "community",
-      stars: 2,
-      forks: 1,
+      // stars: 2,
+      // forks: 1,
       language: "JavaScript",
       github: "https://github.com/ARPLearn/Git-Prove"
     },
@@ -332,7 +341,7 @@ const Portfolio = () => {
       title: "QuantumFit API",
       description: "Node.js/TypeScript backend with Python microservices implementing TruLens-powered LLM prompt evaluations for AI-driven fitness.",
       type: "AI/ML",
-      stars: 1,
+      // stars: 1,
       language: "Python/TypeScript",
       github: "https://github.com/LachPawel/QuantumFit-Gemini-Vertex"
     },
@@ -340,7 +349,7 @@ const Portfolio = () => {
       title: "QuantumFit Mobile",
       description: "Revolutionary React Native fitness app using AI to help users physically become better versions of themselves.",
       type: "mobile",
-      stars: 1,
+      // stars: 1,
       language: "TypeScript - React Native",
       github: "https://github.com/LachPawel/QuantumFit"
     },
@@ -348,7 +357,7 @@ const Portfolio = () => {
       title: "Smart Contracts Caller",
       description: "Backend tool for executing methods on Substrate-based Smart Contracts, powered by Polkadot.js.",
       type: "blockchain",
-      stars: 1,
+      // stars: 1,
       language: "TypeScript",
       github: "https://github.com/LachPawel/Substrate-Polkadot-Smart-Contracts-Caller"
     },
@@ -356,16 +365,17 @@ const Portfolio = () => {
       title: "RISC Zero Examples",
       description: "Zero-knowledge proofs based on RISC Zero with multiple example implementations across different branches.",
       type: "blockchain",
-      forks: 1,
+      // forks: 1,
       language: "Rust",
       github: "https://github.com/LachPawel/RISC-Zero-Prover-Verifier"
     },
     {
-      title: "Arduino RC Car",
-      description: "DIY remote-controlled car built with Arduino. Complete tutorial with 15k+ views on dev.to helping makers build their own.",
-      type: "robotics",
-      language: "C++/Java",
-      github: "https://dev.to/pawel/how-to-build-your-own-rc-car-with-arduino-arducar-12ei"
+      title: "Gradatrim",
+      description: "Innovative iOS fitness app combining AI-powered coaching with real-time form analysis for personalized workout guidance.",
+      type: "mobile",
+      featured: false,
+      language: "Swift",
+      github: "https://github.com/The-Sloths/Gradatrim"
     }
   ];
 
@@ -871,7 +881,7 @@ const Portfolio = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className="border transition-colors"
+                  className="border transition-colors overflow-hidden"
                   style={{ 
                     backgroundColor: isDark ? '#1e1e1e' : '#ffffff',
                     borderColor: '#333'
@@ -879,6 +889,15 @@ const Portfolio = () => {
                   onMouseEnter={(e) => e.currentTarget.style.borderColor = '#BADA55'}
                   onMouseLeave={(e) => e.currentTarget.style.borderColor = '#333'}
                 >
+                  {hackathon.image && (
+                    <div className="relative w-full h-48 overflow-hidden">
+                      <img 
+                        src={hackathon.image} 
+                        alt={hackathon.title}
+                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                      />
+                    </div>
+                  )}
                   <div className="p-4 sm:p-6">
                     {hackathon.featured && (
                       <div className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: '#BADA55' }}>
@@ -1051,13 +1070,22 @@ const Portfolio = () => {
             
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {filterProjects().map((project, index) => (
-                <div key={index} className="border transition-colors"
+                <div key={index} className="border transition-colors overflow-hidden"
                 style={{ 
                   backgroundColor: isDark ? '#1e1e1e' : '#ffffff',
                   borderColor: '#333'
                 }}
                 onMouseEnter={(e) => e.currentTarget.style.borderColor = '#BADA55'}
                 onMouseLeave={(e) => e.currentTarget.style.borderColor = '#333'}>
+                  {project.image && (
+                    <div className="relative w-full h-48 overflow-hidden">
+                      <img 
+                        src={project.image} 
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                      />
+                    </div>
+                  )}
                   <div className="p-4 sm:p-6">
                     {project.featured && (
                       <div className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: '#BADA55' }}>
