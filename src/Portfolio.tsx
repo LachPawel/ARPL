@@ -1118,14 +1118,14 @@ const Portfolio = () => {
                       </div>
                       
                       <div className={`flex items-center gap-3 ${isDark ? 'text-gray-600' : 'text-gray-500'}`}>
-                        {project.stars && project.stars > 0 && (
+                        {(project as any).stars && (project as any).stars > 0 && (
                           <span className="flex items-center gap-1">
-                            • {project.stars}
+                            • {(project as any).stars}
                           </span>
                         )}
-                        {project.forks && (
+                        {(project as any).forks && (
                           <span className="flex items-center gap-1">
-                            • {project.forks}
+                            • {(project as any).forks}
                           </span>
                         )}
                       </div>
