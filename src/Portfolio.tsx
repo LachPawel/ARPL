@@ -237,9 +237,17 @@ const Portfolio = () => {
       title: "PitchMeBaby Winner",
       event: "PitchMeBaby",
       type: "pitch",
-      link: null,
+      link: "https://www.youtube.com/watch?v=NMk20KeD-ec",
       featured: true,
       note: "Won December 2024 - Same day as Straighty Product Hunt success"
+    },
+    {
+      title: "Founders Running Club",
+      event: "Founders Running Club :: Warsaw",
+      type: "organizer",
+      link: "https://www.meetup.com/founders-running-club-warsaw/",
+      featured: true,
+      note: "Active contributor and participant of the Founders Running Club :: Warsaw"
     }
   ];
 
@@ -272,28 +280,6 @@ const Portfolio = () => {
       image: "/images/straighty.png",
     },
     {
-      title: "Senior Cactus AI",
-      description: "Interactive robot cactus with personality using Raspberry Pi Pico, React Native, Bluetooth, and OpenAI's Realtime API for voice-controlled interactions.",
-      type: "robotics",
-      featured: true,
-      // forks: 1,
-      language: "TypeScript/Python",
-      github: "https://github.com/LachPawel/SenorCactus.AI",
-      image: "/images/senorcactus.png"
-    },
-    {
-      title: "LazyDog AI Robot",
-      description: "Custom WAVEGO quadruped robot enhanced with AI capabilities. Featured in multiple viral YouTube videos demonstrating robotics and AI integration.",
-      type: "robotics",
-      // stars: 1,
-      // forks: 1,
-      featured: true,
-      link: "https://github.com/LachPawel/lazydog",
-      language: "Python",
-      github: "https://github.com/LachPawel/lazydog",
-      image: "/images/lazydog.png"
-    },
-    {
       title: "Arduino RC Car",
       description: "DIY remote-controlled car built with Arduino. Complete tutorial with 15k+ views on dev.to helping makers build their own.",
       type: "robotics",
@@ -301,6 +287,33 @@ const Portfolio = () => {
       language: "C++/Java",
       github: "https://dev.to/pawel/how-to-build-your-own-rc-car-with-arduino-arducar-12ei",
       image: "/images/arducar.png"
+    },
+    {
+      title: "Syncra.xyz",
+      description: "Startup co-founded from zkVote hackathon win (HackOnChain 2022 Berlin). Zero-knowledge voting system that evolved into a full startup, accelerated by AlephZero.",
+      type: "blockchain",
+      featured: true,
+      link: "https://syncra.xyz",
+      language: "TypeScript/Rust",
+      image: "/images/syncra.png"
+    },
+    {
+      title: "LazyDog AI Robot",
+      description: "Custom WAVEGO quadruped robot enhanced with AI capabilities. Featured in multiple viral YouTube videos demonstrating robotics and AI integration.",
+      type: "robotics",
+      featured: true,
+      link: "https://github.com/LachPawel/lazydog",
+      language: "Python",
+      github: "https://github.com/LachPawel/lazydog",
+      image: "/images/lazydog.png"
+    },
+    {
+      title: "Senior Cactus AI",
+      description: "Interactive robot cactus with personality using Raspberry Pi Pico, React Native, Bluetooth, and OpenAI's Realtime API for voice-controlled interactions.",
+      type: "robotics",
+      featured: false,
+      language: "TypeScript/Python",
+      github: "https://github.com/LachPawel/SenorCactus.AI"
     },
     {
       title: "BUN-HTMX-Full-Stack-Template",
