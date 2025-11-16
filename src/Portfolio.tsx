@@ -394,6 +394,30 @@ const Portfolio = () => {
 
   const content = [
     {
+      title: "ARP Learn",
+      platform: "YouTube",
+      type: "video",
+      link: "https://www.youtube.com/@arplearn",
+      views: "1K+ subscribers • Tech YT channel",
+      image: "/images/arpl.png"
+    },
+    {
+      title: "Z innej perspektywy - From a Different Perspective",
+      platform: "YouTube",
+      type: "video",
+      link: "https://www.youtube.com/@zinnejperspektywy",
+      views: "100+ subscribers • Personal vlog about life, learning & sports",
+      image: "/images/zinnejperspektywy.png"
+    },
+    {
+      title: "DEPTH",
+      platform: "SoundCloud",
+      type: "video",
+      link: "https://soundcloud.com/depth-arpl",
+      views: "Alternative Ambient Post-Rock music project",
+      image: "/images/depth.png"
+    },
+    {
       title: "It's ALIVE! I Gave My Robot Dog an AI Brain",
       platform: "YouTube",
       type: "video",
@@ -971,7 +995,7 @@ const Portfolio = () => {
                 Speaking & Community
               </h2>
               <p className={`${isDark ? 'text-gray-500' : 'text-gray-600'} text-sm sm:text-base`}>
-                Active speaker, organizer, and supporter of the Warsaw tech community
+                Active speaker, organizer, and supporter of the tech community
               </p>
             </div>
             
@@ -1163,19 +1187,31 @@ const Portfolio = () => {
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
               {content.map((item, index) => (
                 <a key={index} href={item.link} target="_blank" rel="noopener noreferrer" 
-                   className="group border p-4 sm:p-6 transition-colors"
+                   className="group border transition-colors overflow-hidden"
                    style={{ 
                      backgroundColor: isDark ? '#1e1e1e' : '#ffffff',
                      borderColor: '#333'
                    }}
                    onMouseEnter={(e) => e.currentTarget.style.borderColor = '#BADA55'}
                    onMouseLeave={(e) => e.currentTarget.style.borderColor = '#333'}>
+                  {(item as any).image && (
+                    <div className="relative w-full h-48 overflow-hidden">
+                      <img 
+                        src={(item as any).image} 
+                        alt={item.title}
+                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                      />
+                    </div>
+                  )}
+                  <div className="p-4 sm:p-6">
                   <div className="flex items-center justify-between mb-3">
                     <span className={`text-xs font-semibold ${isDark ? 'text-gray-500' : 'text-gray-500'} uppercase tracking-wider`}>
                       {item.platform}
                     </span>
                     {item.type === 'article' ? (
                       <FileText size={14} className={isDark ? 'text-gray-500' : 'text-gray-500'} />
+                    ) : item.platform === 'SoundCloud' ? (
+                      <ExternalLink size={14} className={isDark ? 'text-gray-500' : 'text-gray-500'} />
                     ) : (
                       <Youtube size={14} className={isDark ? 'text-gray-500' : 'text-gray-500'} />
                     )}
@@ -1184,8 +1220,13 @@ const Portfolio = () => {
                     {item.title}
                   </h4>
                   <p className={`text-xs sm:text-sm ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
-                    {item.type === 'article' ? `${item.reads} reads` : `${item.views} views`}
+                    {item.type === 'article' 
+                      ? `${item.reads} reads` 
+                      : item.views?.includes('subscribers') || item.views?.includes('project') || item.views?.includes('music')
+                        ? item.views 
+                        : `${item.views} views`}
                   </p>
+                  </div>
                 </a>
               ))}
             </div>
