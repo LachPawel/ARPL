@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Navigation } from './Navigation';
+import { Footer } from './Footer';
 import { useTheme } from '../../context/ThemeContext';
 
 interface LayoutProps {
@@ -18,6 +19,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
     >
       <Navigation />
       {children}
+      <Footer />
     </div>
   );
 };
