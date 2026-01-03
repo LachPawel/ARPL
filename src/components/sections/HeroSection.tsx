@@ -10,7 +10,7 @@ export const HeroSection: React.FC = () => {
 
   const advantages = [
     'Software Engineer | Educator | Content Creator',
-    'Won world\'s largest hackathon (10,000+ projects)',
+    'Winner in the world\'s largest hackathon (10,000+ projects)',
     'Former university lecturer',
   ];
 
