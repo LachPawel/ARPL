@@ -428,8 +428,8 @@ export const content: ContentItem[] = [
     title: "Z innej perspektywy - From a Different Perspective",
     platform: "YouTube",
     type: "video",
-    link: "https://www.youtube.com/@zinnejperspektywy",
-    views: "100+ subscribers • Personal vlog about life, learning & sports",
+    link: "https://www.youtube.com/@zip_differentperspective",
+    views: "Personal vlog about life, learning & sports",
     image: "/images/zinnejperspektywy.png"
   },
   {

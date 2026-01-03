@@ -13,8 +13,8 @@ export const ProjectsSection: React.FC = () => {
   // Featured items in specific order
   const featuredOrder = [
     'Spindra', 'Zero-G', 'Straighty',
+    'ARP Learn', 'Z innej perspektywy - From a Different Perspective', 'DEPTH',
     'Syncra.xyz', 'LazyDog AI Robot', 'Arduino RC Car',
-    'ARP Learn', 'Z innej perspektywy - From a Different Perspective', 'DEPTH'
   ];
 
   // Combine all items and remove duplicates
