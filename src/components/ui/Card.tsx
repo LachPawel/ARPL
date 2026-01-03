@@ -9,6 +9,7 @@ interface CardProps {
   hoverEffect?: boolean;
   image?: string;
   onClick?: () => void;
+  style?: React.CSSProperties;
 }
 
 export const Card: React.FC<CardProps> = ({
@@ -18,6 +19,7 @@ export const Card: React.FC<CardProps> = ({
   hoverEffect = true,
   image,
   onClick,
+  style,
 }) => {
   return (
     <motion.div
@@ -29,6 +31,7 @@ export const Card: React.FC<CardProps> = ({
       style={{
         backgroundColor: getBackground(isDark, 'primary'),
         borderColor: getBorderColor(isDark),
+        ...style,
       }}
       onClick={onClick}
       onMouseEnter={(e) => {

@@ -101,7 +101,7 @@ export const SpeakingSection: React.FC = () => {
           <li className="flex items-start gap-2">
             <span className="mt-0.5">•</span>
             <span>
-              Regular speaker at Warsaw.js, Node.js Warsaw, PitchMeBaby, and StartupGrind Warsaw
+              Speaker at multiple meetups including: Warsaw.js, Node.js Warsaw, PitchMeBaby, and StartupGrind Warsaw
             </span>
           </li>
           <li className="flex items-start gap-2">

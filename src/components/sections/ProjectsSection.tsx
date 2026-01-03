@@ -8,9 +8,17 @@ import { getTextColor, getBrandColor } from '../../theme';
 export const ProjectsSection: React.FC = () => {
   const { isDark } = useTheme();
   const [activeFilter, setActiveFilter] = useState<string>('all');
+  const [showAll, setShowAll] = useState(false);
 
-  // Combine all items
-  const allItems = [
+  // Featured items in specific order
+  const featuredOrder = [
+    'Spindra', 'Zero-G', 'Straighty',
+    'Syncra.xyz', 'LazyDog AI Robot', 'Arduino RC Car',
+    'ARP Learn', 'Z innej perspektywy - From a Different Perspective', 'DEPTH'
+  ];
+
+  // Combine all items and remove duplicates
+  const allItemsWithDuplicates = [
     ...hackathons.map(h => ({
       title: h.title,
       description: h.description,
@@ -42,11 +50,36 @@ export const ProjectsSection: React.FC = () => {
     })),
   ];
 
+  // Remove duplicates based on title
+  const seenTitles = new Set<string>();
+  const allItems = allItemsWithDuplicates.filter(item => {
+    if (seenTitles.has(item.title)) {
+      return false;
+    }
+    seenTitles.add(item.title);
+    return true;
+  });
+
+  // Sort: featured items first in specified order, then rest
+  const sortedItems = [...allItems].sort((a, b) => {
+    const aIndex = featuredOrder.indexOf(a.title);
+    const bIndex = featuredOrder.indexOf(b.title);
+    
+    if (aIndex !== -1 && bIndex !== -1) {
+      return aIndex - bIndex;
+    }
+    if (aIndex !== -1) return -1;
+    if (bIndex !== -1) return 1;
+    return 0;
+  });
+
   const filters = ['all', 'hackathon', 'project', 'content'];
 
   const filteredItems = activeFilter === 'all' 
-    ? allItems 
-    : allItems.filter(item => item.type === activeFilter);
+    ? sortedItems 
+    : sortedItems.filter(item => item.type === activeFilter);
+
+  const displayedItems = showAll ? filteredItems : filteredItems.slice(0, 9);
 
   return (
     <Section id="projects" isDark={isDark}>
@@ -78,7 +111,7 @@ export const ProjectsSection: React.FC = () => {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {filteredItems.map((item, index) => (
+            {displayedItems.map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -89,19 +122,11 @@ export const ProjectsSection: React.FC = () => {
                 <Card 
                   isDark={isDark} 
                   image={item.image}
-                  onClick={item.link ? () => window.open(item.link, '_blank') : undefined}
-                  className={item.link ? 'cursor-pointer' : ''}
+                  onClick={item.link ? () => window.open(item.link as string, '_blank') : undefined}
+                  className={`${item.link ? 'cursor-pointer' : ''} h-full`}
+                  style={{ minHeight: item.image ? '400px' : 'auto' }}
                 >
-                  <CardContent>
-                    {item.featured && (
-                      <div
-                        className="text-xs font-semibold uppercase tracking-wider mb-3"
-                        style={{ color: getBrandColor(isDark) }}
-                      >
-                        Featured
-                      </div>
-                    )}
-
+                  <CardContent className="h-full flex flex-col">
                     <h3 className="text-base sm:text-lg font-semibold mb-3">{item.title}</h3>
 
                     <p
@@ -126,7 +151,7 @@ export const ProjectsSection: React.FC = () => {
                       </div>
                     )}
 
-                    <div className="flex items-center gap-2 text-xs">
+                    <div className="flex items-center gap-2 text-xs mt-auto">
                       <span
                         className="px-2 py-1 border font-light"
                         style={{
@@ -147,6 +172,21 @@ export const ProjectsSection: React.FC = () => {
               </motion.div>
             ))}
           </div>
+
+          {!showAll && filteredItems.length > 9 && (
+            <div className="flex justify-center mt-12">
+              <button
+                onClick={() => setShowAll(true)}
+                className="px-6 py-3 font-light transition-opacity hover:opacity-70 border"
+                style={{
+                  color: getBrandColor(isDark),
+                  borderColor: getBrandColor(isDark),
+                }}
+              >
+                Show More ({filteredItems.length - 9} more)
+              </button>
+            </div>
+          )}
         </motion.div>
       </div>
     </Section>

@@ -13,23 +13,31 @@ export const CommunitySection: React.FC = () => {
       text: 'Active supporter of Node.js Warsaw & Founder Running Club Warsaw',
       links: [
         { label: 'Node.js Warsaw', url: 'https://www.meetup.com/node-js-warsaw/' },
-        { label: 'Running Club', url: 'https://www.instagram.com/runclubrundka/' }
+        { label: 'Running Club', url: 'https://www.instagram.com/runclubrundka/' },
+        { label: 'Node.js Warsaw Social Coding Edition Organizer', url: 'https://www.meetup.com/node-js-warsaw/events/296993184/' }
       ]
     },
     {
-      text: 'Spoke at Warsaw.js, Node.js Warsaw, PitchMeBaby, and StartupGrind Warsaw',
+      text: 'Spoke at multiple meetups including: Warsaw.js, Node.js Warsaw, PitchMeBaby, and StartupGrind Warsaw',
       links: [
         { label: 'ZK Talk', url: 'https://www.youtube.com/watch?v=AoG1wzCibJQ' },
-        { label: 'RiscZero Tutorial', url: 'https://youtu.be/mQQePxfE1sE' }
+        { label: 'When Robots Judge Your Posture', url: 'https://www.youtube.com/watch?v=jF7zOf7sG9o' },
+        
       ]
     },
     {
       text: 'PitchMeBaby startup pitch contest winner (December 2024)',
-      links: []
+      links: [
+        { label: 'PitchMeBaby Instagram Post', url: 'https://www.instagram.com/p/DDo7Eqks6Zz/' },
+        { label: 'Winning Pitch Video', url: 'https://www.youtube.com/watch?v=NMk20KeD-ec' }
+      ]
     },
     {
-      text: 'Former University Lecturer',
-      links: []
+      text: 'Open Source Contributor',
+      links: [
+        { label: 'RiscZero Tutorial', url: 'https://youtu.be/mQQePxfE1sE' },
+        { label: 'Contribution to RiscZero Docs', url: 'https://x.com/RiscZero/status/1664270670203854850' }
+      ]
     },
   ];
 
