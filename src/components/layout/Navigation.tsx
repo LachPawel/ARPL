@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Github, Youtube, Linkedin, Moon, Sun, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../../context/ThemeContext';
@@ -7,8 +7,11 @@ import { getBorderColor, getTextColor } from '../../theme';
 
 export const Navigation: React.FC = () => {
   const { isDark, toggleTheme } = useTheme();
+  const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+  const isOnBlogPage = location.pathname.startsWith('/blog');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -75,13 +78,15 @@ export const Navigation: React.FC = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-6">
-          <Link
-            to="/blog"
-            className="text-sm font-light transition-opacity hover:opacity-50"
-            style={{ color: getTextColor(isDark, 'primary') }}
-          >
-            Blog
-          </Link>
+          {!isOnBlogPage && (
+            <Link
+              to="/blog"
+              className="text-sm font-light transition-opacity hover:opacity-50"
+              style={{ color: getTextColor(isDark, 'primary') }}
+            >
+              Blog
+            </Link>
+          )}
           
           <SocialLinks />
 
@@ -132,14 +137,16 @@ export const Navigation: React.FC = () => {
             }}
           >
             <div className="px-4 py-6 space-y-4">
-              <Link
-                to="/blog"
-                className="block text-center text-sm font-light"
-                style={{ color: getTextColor(isDark, 'primary') }}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Blog
-              </Link>
+              {!isOnBlogPage && (
+                <Link
+                  to="/blog"
+                  className="block text-center text-sm font-light"
+                  style={{ color: getTextColor(isDark, 'primary') }}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Blog
+                </Link>
+              )}
               <div className="flex items-center justify-center space-x-6">
                 <SocialLinks />
               </div>

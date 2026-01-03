@@ -183,7 +183,7 @@ export const ProjectsSection: React.FC = () => {
                   borderColor: getBrandColor(isDark),
                 }}
               >
-                Show More ({filteredItems.length - 9} more)
+                Show More
               </button>
             </div>
           )}
