@@ -323,6 +323,15 @@ export const projects: Project[] = [
     image: "/images/syncra.png"
   },
   {
+    title: "Eidolon",
+    description: "Next-generation Manufacturing Execution System (MES) bridging production planning and shop floor execution. Features AI-driven insights, vector search, and real-time production tracking.",
+    type: "backend",
+    featured: false,
+    link: "https://github.com/LachPawel/Eidolon",
+    language: "TypeScript",
+    github: "https://github.com/LachPawel/Eidolon"
+  },
+  {
     title: "LazyDog AI Robot",
     description: "Custom WAVEGO quadruped robot enhanced with AI capabilities. Featured in multiple viral YouTube videos demonstrating robotics and AI integration.",
     type: "robotics",
