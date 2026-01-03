@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
 import { Navigation } from './Navigation';
-import { ScrollProgressBar } from './ScrollProgressBar';
 import { useTheme } from '../../context/ThemeContext';
 
 interface LayoutProps {
@@ -15,9 +14,8 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       className={`min-h-screen transition-colors duration-200 ${
         isDark ? 'text-white' : 'bg-white text-black'
       }`}
-      style={isDark ? { backgroundColor: '#1e1e1e' } : {}}
+      style={isDark ? { backgroundColor: '#040404' } : {}}
     >
-      <ScrollProgressBar />
       <Navigation />
       {children}
     </div>

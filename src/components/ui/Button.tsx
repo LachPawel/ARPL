@@ -1,6 +1,6 @@
 import React, { ButtonHTMLAttributes } from 'react';
 import { motion } from 'framer-motion';
-import { colors, transitions } from '../../theme';
+import { getBrandColor, getBorderColor } from '../../theme';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline';
@@ -21,26 +21,23 @@ export const Button: React.FC<ButtonProps> = ({
   className = '',
   ...props
 }) => {
-  const baseStyles = "px-4 sm:px-6 py-3 text-center font-medium transition-colors text-sm sm:text-base";
+  const baseStyles = "px-6 py-3 text-sm font-light transition-opacity hover:opacity-70";
   
   const getStyles = () => {
+    const brandColor = getBrandColor(isDark);
+    const borderColor = getBorderColor(isDark);
+    
     switch (variant) {
       case 'primary':
         return {
-          backgroundColor: colors.brand.primary,
-          color: isDark ? colors.background.dark : '#ffffff',
+          backgroundColor: brandColor,
+          color: isDark ? '#000000' : '#ffffff',
         };
       case 'secondary':
-        return {
-          backgroundColor: isDark ? colors.background.darkSecondary : colors.background.lightSecondary,
-          borderColor: colors.brand.primary,
-          color: colors.brand.primary,
-          border: `1px solid ${colors.brand.primary}`,
-        };
       case 'outline':
         return {
-          border: `1px solid ${colors.brand.primary}`,
-          color: colors.brand.primary,
+          border: `1px solid ${borderColor}`,
+          color: brandColor,
           backgroundColor: 'transparent',
         };
       default:
@@ -57,20 +54,6 @@ export const Button: React.FC<ButtonProps> = ({
       {...(props as any)}
       className={`${baseStyles} ${className}`}
       style={getStyles()}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
-      onMouseEnter={(e: any) => {
-        if (variant === 'outline') {
-          e.currentTarget.style.backgroundColor = colors.brand.primary;
-          e.currentTarget.style.color = isDark ? colors.background.dark : '#ffffff';
-        }
-      }}
-      onMouseLeave={(e: any) => {
-        if (variant === 'outline') {
-          e.currentTarget.style.backgroundColor = 'transparent';
-          e.currentTarget.style.color = colors.brand.primary;
-        }
-      }}
     >
       {children}
     </Component>

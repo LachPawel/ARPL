@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Calendar, Clock, Tag, ArrowRight } from 'lucide-react';
+import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { Layout } from '../components/layout';
 import { Section, SectionHeader, Card, CardContent, FilterGroup } from '../components/ui';
 import { blogPosts } from '../data/blog';
-import { getTextColor, colors } from '../theme';
+import { getTextColor, getBrandColor, getBorderColor } from '../theme';
 
 export const BlogPage: React.FC = () => {
   const { isDark } = useTheme();
@@ -70,14 +70,12 @@ export const BlogPage: React.FC = () => {
                     {post.tags.map((tag, idx) => (
                       <span
                         key={idx}
-                        className="px-2 py-1 text-xs rounded flex items-center gap-1"
+                        className="px-2 py-1 text-xs font-light border"
                         style={{
-                          backgroundColor: isDark ? '#1f1f1f' : '#f5f5f5',
-                          color: colors.brand.primary,
-                          border: `1px solid ${isDark ? '#333' : '#e0e0e0'}`,
+                          color: getTextColor(isDark, 'secondary'),
+                          borderColor: getBorderColor(isDark),
                         }}
                       >
-                        <Tag size={10} />
                         {tag}
                       </span>
                     ))}
@@ -85,14 +83,8 @@ export const BlogPage: React.FC = () => {
 
                   <Link
                     to={`/blog/${post.id}`}
-                    className="inline-flex items-center gap-2 text-sm font-medium transition-colors"
-                    style={{ color: colors.brand.primary }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.color = colors.brand.primaryHover;
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.color = colors.brand.primary;
-                    }}
+                    className="inline-flex items-center gap-2 text-sm font-light transition-opacity hover:opacity-70"
+                    style={{ color: getBrandColor(isDark) }}
                   >
                     Read More
                     <ArrowRight size={14} />

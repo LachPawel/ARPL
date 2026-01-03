@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { motion } from 'framer-motion';
-import { colors, getBackground, getBorderColor } from '../../theme';
+import { getBackground, getBorderColor } from '../../theme';
 
 interface CardProps {
   children: ReactNode;
@@ -25,29 +25,27 @@ export const Card: React.FC<CardProps> = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4 }}
-      className={`border transition-colors overflow-hidden ${className}`}
+      className={`border transition-all overflow-hidden ${hoverEffect && onClick ? 'hover:border-opacity-70 cursor-pointer' : ''} ${className}`}
       style={{
         backgroundColor: getBackground(isDark, 'primary'),
         borderColor: getBorderColor(isDark),
       }}
+      onClick={onClick}
       onMouseEnter={(e) => {
-        if (hoverEffect) {
-          e.currentTarget.style.borderColor = colors.brand.primary;
+        if (onClick) {
+          e.currentTarget.style.borderColor = isDark ? '#555' : '#999';
         }
       }}
       onMouseLeave={(e) => {
-        if (hoverEffect) {
-          e.currentTarget.style.borderColor = getBorderColor(isDark);
-        }
+        e.currentTarget.style.borderColor = getBorderColor(isDark);
       }}
-      onClick={onClick}
     >
       {image && (
         <div className="relative w-full h-48 overflow-hidden">
           <img
             src={image}
             alt="Card image"
-            className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+            className="w-full h-full object-cover"
           />
         </div>
       )}

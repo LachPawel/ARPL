@@ -3,7 +3,7 @@ import { Trophy, ExternalLink, Youtube } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 import { Section, SectionHeader, FilterGroup, Card, CardContent } from '../ui';
 import { hackathons } from '../../data/portfolio';
-import { colors, getTextColor } from '../../theme';
+import { getTextColor } from '../../theme';
 
 export const HackathonsSection: React.FC = () => {
   const { isDark } = useTheme();
@@ -45,8 +45,8 @@ export const HackathonsSection: React.FC = () => {
             <CardContent>
               {hackathon.featured && (
                 <div
-                  className="text-xs font-semibold uppercase tracking-wider mb-3"
-                  style={{ color: colors.brand.primary }}
+                  className="text-xs font-light uppercase tracking-wider mb-3"
+                  style={{ color: getTextColor(isDark, 'secondary') }}
                 >
                   Featured
                 </div>
@@ -80,7 +80,7 @@ export const HackathonsSection: React.FC = () => {
               <div className="space-y-2">
                 {hackathon.achievements.map((achievement, idx) => (
                   <div key={idx} className="flex items-start gap-2 text-xs sm:text-sm">
-                    <span style={{ color: colors.brand.primary }}>•</span>
+                    <span style={{ color: getTextColor(isDark, 'secondary') }}>•</span>
                     <span style={{ color: getTextColor(isDark, 'secondary') }}>{achievement}</span>
                   </div>
                 ))}

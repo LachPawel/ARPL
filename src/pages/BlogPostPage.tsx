@@ -1,11 +1,11 @@
 import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { Calendar, Clock, Tag, ArrowLeft } from 'lucide-react';
+import { Calendar, Clock, ArrowLeft } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { Layout } from '../components/layout';
 import { Section } from '../components/ui';
 import { blogPosts } from '../data/blog';
-import { getTextColor, colors } from '../theme';
+import { getTextColor, getBrandColor, getBorderColor } from '../theme';
 
 export const BlogPostPage: React.FC = () => {
   const { isDark } = useTheme();
@@ -23,14 +23,8 @@ export const BlogPostPage: React.FC = () => {
         <div className="pt-16 sm:pt-20 max-w-4xl mx-auto">
           <Link
             to="/blog"
-            className="inline-flex items-center gap-2 mb-8 text-sm transition-colors"
-            style={{ color: colors.brand.primary }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = colors.brand.primaryHover;
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = colors.brand.primary;
-            }}
+            className="inline-flex items-center gap-2 mb-8 text-sm font-light transition-opacity hover:opacity-70"
+            style={{ color: getBrandColor(isDark) }}
           >
             <ArrowLeft size={16} />
             Back to Blog
@@ -71,42 +65,29 @@ export const BlogPostPage: React.FC = () => {
             {post.tags.map((tag, idx) => (
               <span
                 key={idx}
-                className="px-3 py-1 text-sm rounded flex items-center gap-1"
+                className="px-3 py-1 text-sm font-light border"
                 style={{
-                  backgroundColor: isDark ? '#1f1f1f' : '#f5f5f5',
-                  color: colors.brand.primary,
-                  border: `1px solid ${isDark ? '#333' : '#e0e0e0'}`,
+                  color: getTextColor(isDark, 'secondary'),
+                  borderColor: getBorderColor(isDark),
                 }}
               >
-                <Tag size={12} />
                 {tag}
               </span>
             ))}
           </div>
 
           <div
-            className="prose prose-lg max-w-none"
-            style={{
-              color: isDark ? '#e0e0e0' : '#333',
-            }}
+            className="prose prose-lg max-w-none whitespace-pre-wrap"
+            style={{ color: getTextColor(isDark, 'tertiary') }}
           >
-            <div
-              style={{ color: getTextColor(isDark, 'tertiary') }}
-              dangerouslySetInnerHTML={{ __html: post.content.replace(/\n/g, '<br />') }}
-            />
+            {post.content}
           </div>
 
-          <div className="mt-12 pt-8 border-t" style={{ borderColor: isDark ? '#333' : '#e0e0e0' }}>
+          <div className="mt-12 pt-8 border-t" style={{ borderColor: getBorderColor(isDark) }}>
             <Link
               to="/blog"
-              className="inline-flex items-center gap-2 text-sm transition-colors"
-              style={{ color: colors.brand.primary }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = colors.brand.primaryHover;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = colors.brand.primary;
-              }}
+              className="inline-flex items-center gap-2 text-sm font-light transition-opacity hover:opacity-70"
+              style={{ color: getBrandColor(isDark) }}
             >
               <ArrowLeft size={16} />
               Back to all posts

@@ -1,5 +1,5 @@
 import React from 'react';
-import { colors, getTextColor } from '../../theme';
+import { getBrandColor, getTextColor } from '../../theme';
 
 interface FilterButtonProps {
   label: string;
@@ -17,27 +17,17 @@ export const FilterButton: React.FC<FilterButtonProps> = ({
   return (
     <button
       onClick={onClick}
-      className="px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium transition-all"
+      className="px-4 py-2 text-sm font-light transition-opacity hover:opacity-70"
       style={
         active
           ? {
-              backgroundColor: colors.brand.primary,
-              color: isDark ? colors.background.dark : '#ffffff',
+              color: getBrandColor(isDark),
+              textDecoration: 'underline',
             }
           : {
               color: getTextColor(isDark, 'secondary'),
             }
       }
-      onMouseEnter={(e) => {
-        if (!active) {
-          e.currentTarget.style.color = isDark ? '#ffffff' : '#000000';
-        }
-      }}
-      onMouseLeave={(e) => {
-        if (!active) {
-          e.currentTarget.style.color = getTextColor(isDark, 'secondary');
-        }
-      }}
     >
       {label}
     </button>

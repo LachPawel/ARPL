@@ -10,59 +10,59 @@
 // ============================================
 
 export const colors = {
-  // Brand Colors
+  // Brand Colors - Minimal monochrome approach
   brand: {
-    primary: '#BADA55', // Signature green
-    primaryHover: '#a8c84a',
-    primaryDark: '#96b63f',
+    primary: '#000000', // Black for light mode
+    primaryHover: '#333333',
+    primaryDark: '#ffffff', // White for dark mode
   },
 
   // Background Colors
   background: {
-    dark: '#1e1e1e',
-    darkSecondary: '#1f1f1f',
+    dark: '#000000',
+    darkSecondary: '#0a0a0a',
     light: '#ffffff',
-    lightSecondary: '#f5f5f5',
+    lightSecondary: '#fafafa',
   },
 
   // Text Colors
   text: {
     dark: {
       primary: '#ffffff',
-      secondary: '#888888',
+      secondary: '#999999',
       tertiary: '#666666',
-      muted: '#555555',
+      muted: '#444444',
     },
     light: {
       primary: '#000000',
       secondary: '#666666',
-      tertiary: '#707070',
-      muted: '#999999',
+      tertiary: '#999999',
+      muted: '#cccccc',
     },
   },
 
   // Border Colors
   border: {
-    dark: '#333333',
-    light: '#e0e0e0',
+    dark: '#222222',
+    light: '#e5e5e5',
   },
 
-  // State Colors
+  // State Colors - Subtle
   state: {
-    success: '#4caf50',
-    error: '#f44336',
-    warning: '#ff9800',
-    info: '#2196f3',
+    success: '#666666',
+    error: '#666666',
+    warning: '#666666',
+    info: '#666666',
   },
 
-  // Category/Type Colors (for tags and badges)
+  // Category/Type Colors - All neutral
   category: {
-    ai: '#BADA55',
-    robotics: '#7986cb',
-    blockchain: '#ba68c8',
-    backend: '#64b5f6',
-    mobile: '#81c784',
-    featured: '#BADA55',
+    ai: '#666666',
+    robotics: '#666666',
+    blockchain: '#666666',
+    backend: '#666666',
+    mobile: '#666666',
+    featured: '#666666',
   },
 } as const;
 
@@ -271,6 +271,13 @@ export const getBackground = (isDark: boolean, variant: 'primary' | 'secondary' 
     return isDark ? colors.background.darkSecondary : colors.background.lightSecondary;
   }
   return isDark ? colors.background.dark : colors.background.light;
+};
+
+/**
+ * Get brand color based on theme (black in light, white in dark)
+ */
+export const getBrandColor = (isDark: boolean) => {
+  return isDark ? colors.brand.primaryDark : colors.brand.primary;
 };
 
 /**
