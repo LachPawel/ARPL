@@ -79,7 +79,7 @@ export const ProjectsSection: React.FC = () => {
     ? sortedItems 
     : sortedItems.filter(item => item.type === activeFilter);
 
-  const displayedItems = showAll ? filteredItems : filteredItems.slice(0, 9);
+  const displayedItems = showAll ? filteredItems : filteredItems.slice(0, 6);
 
   return (
     <Section id="projects" isDark={isDark}>
@@ -173,7 +173,7 @@ export const ProjectsSection: React.FC = () => {
             ))}
           </div>
 
-          {!showAll && filteredItems.length > 9 && (
+          {!showAll && filteredItems.length > 6 && (
             <div className="flex justify-center mt-12">
               <button
                 onClick={() => setShowAll(true)}
