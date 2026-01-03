@@ -13,7 +13,7 @@ export const CommunitySection: React.FC = () => {
       text: 'Active supporter of Node.js Warsaw & Founder Running Club Warsaw',
       links: [
         { label: 'Node.js Warsaw', url: 'https://www.meetup.com/node-js-warsaw/' },
-        { label: 'Running Club', url: 'https://www.instagram.com/runclubrundka/' },
+        { label: 'Running Club', url: 'https://www.meetup.com/founders-running-club-warsaw/' },
         { label: 'Node.js Warsaw Social Coding Edition Organizer', url: 'https://www.meetup.com/node-js-warsaw/events/296993184/' }
       ]
     },
