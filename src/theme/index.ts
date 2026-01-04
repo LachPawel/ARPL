@@ -35,9 +35,9 @@ export const colors = {
     },
     light: {
       primary: '#000000',
-      secondary: '#666666',
-      tertiary: '#999999',
-      muted: '#cccccc',
+      secondary: '#404040',
+      tertiary: '#666666',
+      muted: '#999999',
     },
   },
 
