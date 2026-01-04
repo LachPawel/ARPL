@@ -4,7 +4,7 @@ import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { Layout } from '../components/layout';
 import { Section, SectionHeader, Card, CardContent, FilterGroup } from '../components/ui';
-import { blogPosts } from '../data/blog';
+import { blogPosts } from '../data/posts';
 import { getTextColor, getBrandColor, getBorderColor } from '../theme';
 
 export const BlogPage: React.FC = () => {

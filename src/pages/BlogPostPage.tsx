@@ -4,8 +4,9 @@ import { Calendar, Clock, ArrowLeft } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { Layout } from '../components/layout';
 import { Section } from '../components/ui';
-import { blogPosts } from '../data/blog';
+import { blogPosts } from '../data/posts';
 import { getTextColor, getBrandColor, getBorderColor } from '../theme';
+import { markdownToHtml } from '../utils/markdown';
 
 export const BlogPostPage: React.FC = () => {
   const { isDark } = useTheme();
@@ -77,11 +78,10 @@ export const BlogPostPage: React.FC = () => {
           </div>
 
           <div
-            className="prose prose-lg max-w-none whitespace-pre-wrap"
+            className="prose prose-lg max-w-none blog-content"
             style={{ color: getTextColor(isDark, 'tertiary') }}
-          >
-            {post.content}
-          </div>
+            dangerouslySetInnerHTML={{ __html: markdownToHtml(post.content) }}
+          />
 
           <div className="mt-12 pt-8 border-t" style={{ borderColor: getBorderColor(isDark) }}>
             <Link
