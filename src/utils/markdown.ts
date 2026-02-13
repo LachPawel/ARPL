@@ -16,10 +16,21 @@ export function markdownToHtml(markdown: string): string {
   // Italic
   html = html.replace(/\*(.*?)\*/gim, '<em>$1</em>');
 
-  // Links
-  html = html.replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+  // YouTube embeds - must come before regular links
+  // Handle pattern: [![title](thumbnail)](youtube-url)
+  html = html.replace(/\[!\[([^\]]+)\]\(https:\/\/img\.youtube\.com\/vi\/([a-zA-Z0-9_-]+)\/[^\)]+\)\]\(https:\/\/www\.youtube\.com\/watch\?v=\2\)/gim, 
+    '<div class="youtube-embed"><iframe width="100%" height="400" src="https://www.youtube.com/embed/$2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>');
+  
+  // Handle pattern: ![title](youtube-watch-url)
+  html = html.replace(/!\[(.+?)\]\(https:\/\/www\.youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)\)/gim, 
+    '<div class="youtube-embed"><iframe width="100%" height="400" src="https://www.youtube.com/embed/$2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>');
+  
+  // Handle pattern: ![title](thumbnail-url)
+  html = html.replace(/!\[(.+?)\]\(https:\/\/img\.youtube\.com\/vi\/([a-zA-Z0-9_-]+)\/[^)]+\)/gim, 
+    '<div class="youtube-embed"><iframe width="100%" height="400" src="https://www.youtube.com/embed/$2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>');
 
-  // Paragraphs (convert double line breaks to <p> tags)
+  // Links
+  html = html.replace(/\[(.+?)\]\((https?:\/\/[^)]+)\)/gim, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
   const paragraphs = html.split('\n\n');
   html = paragraphs
     .map(para => {

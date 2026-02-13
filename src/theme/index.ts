@@ -29,9 +29,9 @@ export const colors = {
   text: {
     dark: {
       primary: '#ffffff',
-      secondary: '#b3b3b3',
-      tertiary: '#999999',
-      muted: '#666666',
+      secondary: '#d4d4d4',
+      tertiary: '#c0c0c0',
+      muted: '#999999',
     },
     light: {
       primary: '#000000',
