@@ -5,6 +5,9 @@
 export function markdownToHtml(markdown: string): string {
   let html = markdown;
 
+  // Remove the first H1 heading (it's already shown as page title)
+  html = html.replace(/^# .*$/m, '');
+
   // Headers
   html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
   html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
