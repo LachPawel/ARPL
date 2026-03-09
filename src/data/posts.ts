@@ -52,7 +52,6 @@ function parseMarkdownPost(markdown: string, id: string): BlogPost {
     'where-did-all-the-sould-go': {
       date: '2026-03-09',
       tags: ['Thoughts', 'Fitness', 'iOS', 'Building'],
-      image: '/images/formkit.png',
     },
   };
   

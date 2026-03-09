@@ -8,6 +8,19 @@ export function markdownToHtml(markdown: string): string {
   // Remove the first H1 heading (it's already shown as page title)
   html = html.replace(/^# .*$/m, '');
 
+  // Code blocks - extract and preserve them before other transformations
+  const codeBlocks: string[] = [];
+  html = html.replace(/```(\w*)\n([\s\S]*?)```/gm, (_match, lang, code) => {
+    const escaped = code.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const langAttr = lang ? ` class="language-${lang}"` : '';
+    const placeholder = `%%CODEBLOCK_${codeBlocks.length}%%`;
+    codeBlocks.push(`<pre><code${langAttr}>${escaped}</code></pre>`);
+    return placeholder;
+  });
+
+  // Inline code
+  html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+
   // Headers
   html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
   html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
@@ -39,19 +52,27 @@ export function markdownToHtml(markdown: string): string {
   // Images
   html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/gim, '<img src="$2" alt="$1" style="max-width:100%;border-radius:8px;margin:1rem 0" />');
 
-  // Links
+  // Links - markdown syntax [text](url)
   html = html.replace(/\[(.+?)\]\((https?:\/\/[^)]+)\)/gim, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+
+  // Auto-link bare URLs (not already inside an href or src attribute)
+  html = html.replace(/(?<!="|'>)(https?:\/\/[^\s<)"]+)/gim, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
   const paragraphs = html.split('\n\n');
   html = paragraphs
     .map(para => {
       const trimmed = para.trim();
       // Don't wrap headers or block-level elements in p tags
-      if (trimmed.startsWith('<h') || trimmed.startsWith('<div') || trimmed.startsWith('<img')) return trimmed;
+      if (trimmed.startsWith('<h') || trimmed.startsWith('<div') || trimmed.startsWith('<img') || trimmed.startsWith('<pre') || trimmed.startsWith('%%CODEBLOCK_')) return trimmed;
       // Don't wrap empty strings
       if (!trimmed) return '';
       return `<p>${trimmed.replace(/\n/g, '<br>')}</p>`;
     })
     .join('\n');
+
+  // Restore code blocks
+  codeBlocks.forEach((block, i) => {
+    html = html.replace(`%%CODEBLOCK_${i}%%`, block);
+  });
 
   return html;
 }

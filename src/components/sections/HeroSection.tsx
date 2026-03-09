@@ -9,7 +9,7 @@ export const HeroSection: React.FC = () => {
   const { isDark } = useTheme();
 
   const advantages = [
-    'Software Engineer | Educator | Content Creator',
+    'The DevRel | Software Engineer | Educator',
     'Winner in the world\'s largest hackathon (10,000+ projects)',
     'Former university lecturer',
   ];
