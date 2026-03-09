@@ -139,6 +139,8 @@ html {
 .blog-content a {
   text-decoration: underline;
   transition: opacity 0.2s;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .blog-content a:hover {
