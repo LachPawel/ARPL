@@ -3,6 +3,7 @@ import { BlogPost } from './blog';
 // Import markdown file as raw text
 import buildingWillBeDifferentMd from './posts/building-will-be-different.md?raw';
 import judgeByDayHackerByNightMd from './posts/judge-by-day-hacker-by-night.md?raw';
+import whereDidAllTheSoulGoMd from './posts/where-did-all-the-sould-go.md?raw';
 
 function parseMarkdownPost(markdown: string, id: string): BlogPost {
   const lines = markdown.split('\n');
@@ -39,7 +40,7 @@ function parseMarkdownPost(markdown: string, id: string): BlogPost {
   }
   
   // Custom date and tags for specific posts
-  const customConfig: Record<string, { date: string; tags?: string[] }> = {
+  const customConfig: Record<string, { date: string; tags?: string[]; image?: string }> = {
     'judge-by-day-hacker-by-night': {
       date: '2026-02-14',
       tags: ['Thoughts', 'Hackathons', 'Building'],
@@ -47,6 +48,11 @@ function parseMarkdownPost(markdown: string, id: string): BlogPost {
     'building-will-be-different': {
       date: '2026-01-03',
       tags: ['Thoughts', 'Startups', 'Building'],
+    },
+    'where-did-all-the-sould-go': {
+      date: '2026-03-09',
+      tags: ['Thoughts', 'Fitness', 'iOS', 'Building'],
+      image: '/images/formkit.png',
     },
   };
   
@@ -60,11 +66,13 @@ function parseMarkdownPost(markdown: string, id: string): BlogPost {
     date: config.date,
     author: 'Pawel Lach',
     tags: config.tags || Array.from(new Set(tags.concat(['Thoughts', 'Startups']))),
+    image: config.image,
     readTime: `${readTime} min`,
   };
 }
 
 export const blogPosts: BlogPost[] = [
+  parseMarkdownPost(whereDidAllTheSoulGoMd, 'where-did-all-the-sould-go'),
   parseMarkdownPost(judgeByDayHackerByNightMd, 'judge-by-day-hacker-by-night'),
   parseMarkdownPost(buildingWillBeDifferentMd, 'building-will-be-different'),
 ];

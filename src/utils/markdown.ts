@@ -32,14 +32,21 @@ export function markdownToHtml(markdown: string): string {
   html = html.replace(/!\[(.+?)\]\(https:\/\/img\.youtube\.com\/vi\/([a-zA-Z0-9_-]+)\/[^)]+\)/gim, 
     '<div class="youtube-embed"><iframe width="100%" height="400" src="https://www.youtube.com/embed/$2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>');
 
+  // Handle pattern: ![title](youtube-shorts-url)
+  html = html.replace(/!\[(.+?)\]\(https?:\/\/(?:www\.)?youtube\.com\/shorts\/([a-zA-Z0-9_-]+)\)/gim, 
+    '<div class="youtube-embed"><iframe width="100%" height="400" src="https://www.youtube.com/embed/$2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>');
+
+  // Images
+  html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/gim, '<img src="$2" alt="$1" style="max-width:100%;border-radius:8px;margin:1rem 0" />');
+
   // Links
   html = html.replace(/\[(.+?)\]\((https?:\/\/[^)]+)\)/gim, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
   const paragraphs = html.split('\n\n');
   html = paragraphs
     .map(para => {
       const trimmed = para.trim();
-      // Don't wrap headers in p tags
-      if (trimmed.startsWith('<h')) return trimmed;
+      // Don't wrap headers or block-level elements in p tags
+      if (trimmed.startsWith('<h') || trimmed.startsWith('<div') || trimmed.startsWith('<img')) return trimmed;
       // Don't wrap empty strings
       if (!trimmed) return '';
       return `<p>${trimmed.replace(/\n/g, '<br>')}</p>`;
