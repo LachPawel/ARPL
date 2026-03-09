@@ -278,7 +278,6 @@ AI can now hear, see, and even speak - the problem here is that AI is also by it
 When we look into the projects, most of the time I can see squats as the default demo exercise, and it's most likely not because squats are relatively easy and most people can do them anywhere without any equipment - it's rather about technical limitations. A very basic squats recognition app would track the position of the user's knees and hips. The models are light enough to run them several times a second on random frames from the camera feed. What we get behind the scenes are most of the time x and y coordinates of each body part. As you may probably imagine now, it's now only about checking the distance between the hips and knees, or the angle between hips, knees, and ankles. To understand it even better we can have a look at the documentation from Apple here: https://developer.apple.com/documentation/vision/detecting-human-body-poses-in-images
 
 ![Human Body Pose](/images/bodypoints.png)
-nts-
 
 I am using the Apple example as I found their model working possibly the best with very fair performance, yet there are many other similar models on the market. My point here was to just make a reliable and stable app that would run without hiccups on a mobile device.
 
