@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paweł's Birthday — March 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f4f0;
+    --gray: #888;
+    --border: #222;
+    --accent: #f5f4f0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      repeating-linear-gradient(0deg, transparent, transparent 39px, #1a1a1a 39px, #1a1a1a 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, #1a1a1a 39px, #1a1a1a 40px);
+    opacity: 0.4;
+  }
+
+  .hero-top {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    right: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .hero-tag {
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    letter-spacing: 0.1em;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 1rem;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 14vw, 160px);
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    margin-bottom: 2rem;
+  }
+
+  .hero-title span {
+    display: block;
+  }
+
+  .hero-title .outline {
+    -webkit-text-stroke: 1px var(--white);
+    color: transparent;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-top: 1px solid var(--border);
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .hero-meta strong {
+    color: var(--white);
+    font-weight: 400;
+    display: block;
+  }
+
+  /* MAIN */
+  main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* SECTION HEADERS */
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.75rem;
+    margin-bottom: 0;
+  }
+
+  /* INTRO */
+  .intro {
+    padding: 4rem 0 3rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .intro p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #bbb;
+    max-width: 560px;
+  }
+
+  .intro p strong {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .day-block {
+    margin-top: 2.5rem;
+  }
+
+  .day-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .day-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 0.05em;
+    line-height: 1;
+  }
+
+  .day-date {
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .events {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .event {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 0 1.5rem;
+    border-top: 1px solid var(--border);
+    padding: 1.25rem 0;
+    position: relative;
+    transition: background 0.2s;
+  }
+
+  .event:hover {
+    background: #111;
+    margin: 0 -2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .event-time {
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 0.08em;
+    padding-top: 2px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .event-body {}
+
+  .event-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .event-detail {
+    font-size: 12px;
+    color: #888;
+    line-height: 1.6;
+  }
+
+  .event-detail a {
+    color: #888;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .event-badges {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 0.6rem;
+  }
+
+  .badge {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid var(--border);
+    color: var(--gray);
+  }
+
+  .badge.host {
+    border-color: #444;
+    color: #ccc;
+    background: #1a1a1a;
+  }
+
+  .badge.birthday {
+    border-color: var(--white);
+    color: var(--white);
+  }
+
+  /* COSTS */
+  .costs {
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .costs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    margin-top: 2rem;
+    border: 1px solid var(--border);
+  }
+
+  .cost-cell {
+    background: var(--black);
+    padding: 1.25rem;
+  }
+
+  .cost-cell-label {
+    font-size: 10px;
+    color: var(--gray);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .cost-items {
+    list-style: none;
+  }
+
+  .cost-items li {
+    font-size: 12px;
+    color: #aaa;
+    padding: 4px 0;
+    border-bottom: 1px solid #1a1a1a;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .cost-items li:last-child { border-bottom: none; }
+
+  .cost-items li::before {
+    content: '—';
+    color: var(--border);
+    flex-shrink: 0;
+  }
+
+  /* RSVP */
+  .rsvp {
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .rsvp-note {
+    font-size: 13px;
+    color: var(--gray);
+    margin: 1.5rem 0 2rem;
+    max-width: 480px;
+    line-height: 1.8;
+  }
+
+  .form-grid {
+    display: grid;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .form-row {
+    background: var(--black);
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 0;
+  }
+
+  .form-row.full {
+    grid-template-columns: 1fr;
+  }
+
+  .form-label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray);
+    padding: 1rem 1.25rem;
+    border-right: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+  }
+
+  .form-row.full .form-label {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea,
+  select {
+    background: transparent;
+    border: none;
+    color: var(--white);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    padding: 1rem 1.25rem;
+    width: 100%;
+    outline: none;
+    resize: none;
+    appearance: none;
+  }
+
+  input[type="text"]::placeholder,
+  input[type="email"]::placeholder,
+  textarea::placeholder {
+    color: #333;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  textarea:focus,
+  select:focus {
+    background: #111;
+  }
+
+  .checkbox-group {
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #aaa;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    transition: all 0.15s;
+  }
+
+  .check-item:hover {
+    border-color: #444;
+    color: var(--white);
+  }
+
+  .check-item input[type="checkbox"] {
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #444;
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  .check-item input[type="checkbox"]:checked {
+    background: var(--white);
+    border-color: var(--white);
+  }
+
+  .check-item input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: var(--black);
+  }
+
+  .submit-row {
+    background: var(--black);
+    padding: 1.25rem;
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid var(--border);
+  }
+
+  .btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--white);
+    color: var(--black);
+    border: none;
+    padding: 12px 28px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .btn:hover { opacity: 0.85; }
+
+  .success-msg {
+    display: none;
+    font-size: 13px;
+    color: var(--gray);
+    padding: 1rem 0;
+    letter-spacing: 0.05em;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 3rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 11px;
+    color: #444;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  footer a {
+    color: #555;
+    text-decoration: none;
+  }
+
+  footer a:hover { color: var(--white); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-content > * {
+    animation: fadeUp 0.7s ease both;
+  }
+  .eyebrow       { animation-delay: 0.1s; }
+  .hero-title    { animation-delay: 0.25s; }
+  .hero-meta     { animation-delay: 0.45s; }
+
+  /* MOBILE */
+  @media (max-width: 600px) {
+    .costs-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .form-label { border-right: none; border-bottom: 1px solid var(--border); }
+    .hero-meta { gap: 1rem; }
+    .event { grid-template-columns: 70px 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-top">
+    <span>Warsaw, PL — 2026</span>
+    <span class="hero-tag">Drop-in welcome</span>
+  </div>
+  <div class="hero-content">
+    <p class="eyebrow">You're invited</p>
+    <h1 class="hero-title">
+      <span>Paweł's</span>
+      <span class="outline">Birthday</span>
+    </h1>
+    <div class="hero-meta">
+      <div><strong>Friday, Mar 27</strong>Go-Karts · Bemowo</div>
+      <div><strong>Saturday, Mar 28</strong>Bikes · Lunch · Karaoke</div>
+      <div><strong>Format</strong>Come to any part</div>
+    </div>
+  </div>
+</section>
+
+<main>
+
+  <!-- INTRO -->
+  <div class="intro">
+    <p>No big plans, no obligations. Just a birthday spread across two days — <strong>karting on Friday</strong>, then a <strong>bike ride, a shared lunch and karaoke on Saturday</strong>. Come for one thing or all of it. Let me know below so I have a rough headcount.</p>
+  </div>
+
+  <!-- TIMELINE -->
+  <section class="timeline">
+    <p class="section-label">Schedule</p>
+
+    <!-- FRIDAY -->
+    <div class="day-block">
+      <div class="day-header">
+        <span class="day-name">Friday</span>
+        <span class="day-date">March 27</span>
+      </div>
+      <div class="events">
+        <div class="event">
+          <div class="event-time">20:00</div>
+          <div class="event-body">
+            <div class="event-title">Go-Karts — A1Karting</div>
+            <div class="event-detail">
+              A1Karting · Annopol 24B, 03-236 Warszawa<br>
+              Warsaw's largest track · <a href="https://maps.app.goo.gl/6QdzSpH2BQhesnJd8" target="_blank">→ Google Maps</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SATURDAY -->
+    <div class="day-block">
+      <div class="day-header">
+        <span class="day-name">Saturday</span>
+        <span class="day-date">March 28</span>
+      </div>
+      <div class="events">
+
+        <div class="event">
+          <div class="event-time">14:00</div>
+          <div class="event-body">
+            <div class="event-title">Coffee — Przystań</div>
+            <div class="event-detail">
+              Przystań kawiarnia · Vistula riverbank<br>
+              <a href="https://maps.app.goo.gl/cn4kAkP2jYUXNaQCA" target="_blank">→ Google Maps</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="event-time">~15:00</div>
+          <div class="event-body">
+            <div class="event-title">Bike Ride along the Vistula</div>
+            <div class="event-detail">
+              ~2 hrs · Vistula Boulevards north & back<br>
+              Free with Veturilo app (first 20 min/trip free)
+            </div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="event-time">~17:00</div>
+          <div class="event-body">
+            <div class="event-title">Appetizers — Poniatówka</div>
+            <div class="event-detail">
+              Poniatówka · outdoors by the river<br>
+              Hummus, spreads, bites — Paweł's treat.<br>
+              <a href="https://maps.app.goo.gl/jQmX8vdLuwq97S9aA" target="_blank">→ Google Maps</a>
+            </div>
+            <div class="event-badges">
+              <span class="badge host">Food on Paweł</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="event-time">18:40</div>
+          <div class="event-body">
+            <div class="event-title">Karaoke — Room Zodiak</div>
+            <div class="event-detail">
+              Kakadu Karaoke · Elektrownia Powiśle · Dobra 42, 00-312 Warszawa<br>
+              Until 19:40 · 12 people · <a href="https://maps.app.goo.gl/TUWgHEVUV6BSDtUo9" target="_blank">→ Google Maps</a>
+            </div>
+            <div class="event-badges">
+              <span class="badge host">Room covered by Paweł</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- COSTS -->
+  <section class="costs">
+    <p class="section-label">What's covered</p>
+    <div class="costs-grid">
+      <div class="cost-cell">
+        <div class="cost-cell-label">Paweł covers</div>
+        <ul class="cost-items">
+          <li>Karaoke room (Zodiak, Kakadu)</li>
+          <li>Appetizers at Poniatówka (hummus, spreads, bites)</li>
+          <li>His own go-kart session</li>
+        </ul>
+      </div>
+      <div class="cost-cell">
+        <div class="cost-cell-label">On you</div>
+        <ul class="cost-items">
+          <li>Go-kart session</li>
+          <li>Bike (free with Veturilo)</li>
+          <li>Drinks throughout</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section class="rsvp" id="rsvp">
+    <p class="section-label">RSVP</p>
+    <p class="rsvp-note">Drop-in is totally fine — but a rough headcount helps. Takes 30 seconds.</p>
+
+    <form id="rsvpForm">
+      <div class="form-grid">
+
+        <div class="form-row">
+          <label class="form-label" for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+        </div>
+
+        <div class="form-row">
+          <label class="form-label" for="contact">Contact</label>
+          <input type="text" id="contact" name="contact" placeholder="Phone or email (optional)">
+        </div>
+
+        <div class="form-row full">
+          <label class="form-label" for="activities">Coming to</label>
+          <div class="checkbox-group">
+            <label class="check-item">
+              <input type="checkbox" name="activities" value="karting"> Fri · Go-karts (20:00)
+            </label>
+            <label class="check-item">
+              <input type="checkbox" name="activities" value="coffee"> Sat · Coffee (14:00)
+            </label>
+            <label class="check-item">
+              <input type="checkbox" name="activities" value="bikes"> Sat · Bikes (~15:00)
+            </label>
+            <label class="check-item">
+              <input type="checkbox" name="activities" value="food"> Sat · Food at Poniatówka (~17:00)
+            </label>
+            <label class="check-item">
+              <input type="checkbox" name="activities" value="karaoke"> Sat · Karaoke (18:40)
+            </label>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label class="form-label" for="dietary">Dietary</label>
+          <input type="text" id="dietary" name="dietary" placeholder="Any restrictions? (optional)">
+        </div>
+
+        <div class="form-row full">
+          <label class="form-label" for="note">Note</label>
+          <textarea id="note" name="note" rows="2" placeholder="Anything else..."></textarea>
+        </div>
+
+      </div>
+
+      <div class="submit-row">
+        <button type="submit" class="btn">Send RSVP →</button>
+      </div>
+    </form>
+
+    <!-- SUCCESS STATE -->
+    <div id="successState" style="display:none; border: 1px solid var(--border); padding: 2rem; margin-top: 1rem;">
+      <div style="font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray); margin-bottom:1rem;">Confirmed</div>
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:36px; line-height:1; margin-bottom:1rem;">See you there.</div>
+      <div style="font-size:13px; color:var(--gray); line-height:1.8;">
+        Thanks for letting me know — your RSVP is in.<br>
+        If anything changes, just message me directly.
+      </div>
+      <div style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid var(--border); font-size:11px; color:#444; letter-spacing:0.08em; text-transform:uppercase;">
+        Paweł's Birthday · Warsaw · March 2026
+      </div>
+    </div>
+
+    <!-- ERROR STATE -->
+    <div id="errorState" style="display:none; border: 1px solid #3a1a1a; padding: 2rem; margin-top: 1rem;">
+      <div style="font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:#884444; margin-bottom:1rem;">Error</div>
+      <div style="font-size:14px; color:#ccc; line-height:1.8; margin-bottom:1.5rem;">
+        Something went wrong sending your RSVP.<br>
+        Please try again or message Paweł directly.
+      </div>
+      <button class="btn" onclick="retryForm()" style="background:transparent; color:var(--white); border:1px solid var(--border);">Try again</button>
+    </div>
+
+  </section>
+
+</main>
+
+<!-- CONFIRMATION MODAL -->
+<div id="confirmModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:100; display:none; align-items:center; justify-content:center; padding:2rem;">
+  <div style="background:var(--black); border:1px solid #333; max-width:440px; width:100%; padding:2rem;">
+    <div style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gray); margin-bottom:1.5rem;">Confirm RSVP</div>
+    <div id="confirmSummary" style="font-size:13px; color:#bbb; line-height:2; margin-bottom:2rem; border-top:1px solid var(--border); padding-top:1.25rem;"></div>
+    <div style="display:flex; gap:12px; justify-content:flex-end;">
+      <button class="btn" onclick="closeModal()" style="background:transparent; color:var(--gray); border:1px solid var(--border);">Edit</button>
+      <button class="btn" id="confirmBtn" onclick="submitForm()">Confirm →</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>Paweł's Birthday · Warsaw · March 2026</span>
+  <a href="https://arpl.dev" target="_blank">arpl.dev</a>
+</footer>
+
+<script>
+  const activityLabels = {
+    karting: 'Fri · Go-karts (20:00)',
+    coffee:  'Sat · Coffee (14:00)',
+    bikes:   'Sat · Bikes (~15:00)',
+    food:    'Sat · Food at Poniatówka (~17:00)',
+    karaoke: 'Sat · Karaoke (18:40)'
+  };
+
+  let pendingData = null;
+
+  document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.querySelector('#name').value.trim();
+    const activities = [...form.querySelectorAll('input[name="activities"]:checked')]
+      .map(el => activityLabels[el.value] || el.value);
+    const dietary = form.querySelector('#dietary').value.trim();
+    const note = form.querySelector('#note').value.trim();
+
+    // Build summary
+    let summary = '<div style="display:grid; gap:4px;">';
+    summary += row('Name', name || '—');
+    summary += row('Coming to', activities.length ? activities.join('<br>') : 'Not specified');
+    if (dietary) summary += row('Dietary', dietary);
+    if (note)    summary += row('Note', note);
+    summary += '</div>';
+
+    document.getElementById('confirmSummary').innerHTML = summary;
+
+    // Store form data
+    const fd = new FormData(form);
+    fd.set('activities', activities.join(', '));
+    pendingData = fd;
+
+    // Show modal
+    const modal = document.getElementById('confirmModal');
+    modal.style.display = 'flex';
+  });
+
+  function row(label, value) {
+    return '<div style="display:grid; grid-template-columns:100px 1fr; gap:12px; padding:6px 0; border-bottom:1px solid #1a1a1a; font-size:12px;">' +
+      '<span style="color:#555; text-transform:uppercase; letter-spacing:0.08em; font-size:10px; padding-top:2px;">' + label + '</span>' +
+      '<span style="color:#ccc;">' + value + '</span>' +
+    '</div>';
+  }
+
+  function closeModal() {
+    document.getElementById('confirmModal').style.display = 'none';
+  }
+
+  async function submitForm() {
+    const btn = document.getElementById('confirmBtn');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('https://formspree.io/f/mreobgpk', {
+        method: 'POST',
+        body: pendingData,
+        headers: { 'Accept': 'application/json' }
+      });
+      closeModal();
+      if (res.ok) {
+        document.getElementById('rsvpForm').style.display = 'none';
+        document.getElementById('successState').style.display = 'block';
+      } else {
+        throw new Error();
+      }
+    } catch {
+      closeModal();
+      btn.textContent = 'Confirm →';
+      btn.disabled = false;
+      document.getElementById('errorState').style.display = 'block';
+    }
+  }
+
+  function retryForm() {
+    document.getElementById('errorState').style.display = 'none';
+    document.getElementById('rsvpForm').style.display = 'block';
+  }
+
+  // Close modal on backdrop click
+  document.getElementById('confirmModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+</script>
+
+</body>
+</html>
