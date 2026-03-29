@@ -266,211 +266,31 @@
     color: var(--white);
   }
 
-  /* COSTS */
-  .costs {
+  /* VIDEO */
+  .video {
     padding: 3rem 0;
     border-bottom: 1px solid var(--border);
   }
 
-  .costs-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--border);
+  .video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
     margin-top: 2rem;
     border: 1px solid var(--border);
   }
 
-  .cost-cell {
-    background: var(--black);
-    padding: 1.25rem;
-  }
-
-  .cost-cell-label {
-    font-size: 10px;
-    color: var(--gray);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-  }
-
-  .cost-items {
-    list-style: none;
-  }
-
-  .cost-items li {
-    font-size: 12px;
-    color: #aaa;
-    padding: 4px 0;
-    border-bottom: 1px solid #1a1a1a;
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  .cost-items li:last-child { border-bottom: none; }
-
-  .cost-items li::before {
-    content: '—';
-    color: var(--border);
-    flex-shrink: 0;
-  }
-
-  /* RSVP */
-  .rsvp {
-    padding: 3rem 0;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .rsvp-note {
-    font-size: 13px;
-    color: var(--gray);
-    margin: 1.5rem 0 2rem;
-    max-width: 480px;
-    line-height: 1.8;
-  }
-
-  .form-grid {
-    display: grid;
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-  }
-
-  .form-row {
-    background: var(--black);
-    display: grid;
-    grid-template-columns: 160px 1fr;
-    gap: 0;
-  }
-
-  .form-row.full {
-    grid-template-columns: 1fr;
-  }
-
-  .form-label {
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gray);
-    padding: 1rem 1.25rem;
-    border-right: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-  }
-
-  .form-row.full .form-label {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-
-  input[type="text"],
-  input[type="email"],
-  textarea,
-  select {
-    background: transparent;
-    border: none;
-    color: var(--white);
-    font-family: 'DM Mono', monospace;
-    font-size: 13px;
-    padding: 1rem 1.25rem;
-    width: 100%;
-    outline: none;
-    resize: none;
-    appearance: none;
-  }
-
-  input[type="text"]::placeholder,
-  input[type="email"]::placeholder,
-  textarea::placeholder {
-    color: #333;
-  }
-
-  input[type="text"]:focus,
-  input[type="email"]:focus,
-  textarea:focus,
-  select:focus {
-    background: #111;
-  }
-
-  .checkbox-group {
-    padding: 1rem 1.25rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .check-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    color: #aaa;
-    cursor: pointer;
-    border: 1px solid var(--border);
-    padding: 6px 12px;
-    transition: all 0.15s;
-  }
-
-  .check-item:hover {
-    border-color: #444;
-    color: var(--white);
-  }
-
-  .check-item input[type="checkbox"] {
-    appearance: none;
-    width: 12px;
-    height: 12px;
-    border: 1px solid #444;
-    background: transparent;
-    cursor: pointer;
-    flex-shrink: 0;
-    padding: 0;
-    position: relative;
-  }
-
-  .check-item input[type="checkbox"]:checked {
-    background: var(--white);
-    border-color: var(--white);
-  }
-
-  .check-item input[type="checkbox"]:checked::after {
-    content: '';
+  .video-wrapper iframe {
     position: absolute;
-    inset: 2px;
-    background: var(--black);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
   }
 
-  .submit-row {
-    background: var(--black);
-    padding: 1.25rem;
-    display: flex;
-    justify-content: flex-end;
-    border-top: 1px solid var(--border);
-  }
 
-  .btn {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    background: var(--white);
-    color: var(--black);
-    border: none;
-    padding: 12px 28px;
-    cursor: pointer;
-    transition: opacity 0.2s;
-  }
-
-  .btn:hover { opacity: 0.85; }
-
-  .success-msg {
-    display: none;
-    font-size: 13px;
-    color: var(--gray);
-    padding: 1rem 0;
-    letter-spacing: 0.05em;
-  }
 
   /* FOOTER */
   footer {
@@ -510,9 +330,6 @@
 
   /* MOBILE */
   @media (max-width: 600px) {
-    .costs-grid { grid-template-columns: 1fr; }
-    .form-row { grid-template-columns: 1fr; }
-    .form-label { border-right: none; border-bottom: 1px solid var(--border); }
     .hero-meta { gap: 1rem; }
     .event { grid-template-columns: 70px 1fr; }
   }
@@ -525,10 +342,10 @@
   <div class="hero-bg"></div>
   <div class="hero-top">
     <span>Warsaw, PL — 2026</span>
-    <span class="hero-tag">Drop-in welcome</span>
+    <span class="hero-tag">That's a wrap</span>
   </div>
   <div class="hero-content">
-    <p class="eyebrow">You're invited</p>
+    <p class="eyebrow">Thank you</p>
     <h1 class="hero-title">
       <span>Paweł's</span>
       <span class="outline">Birthday</span>
@@ -536,7 +353,7 @@
     <div class="hero-meta">
       <div><strong>Friday, Mar 27</strong>Go-Karts · Bemowo</div>
       <div><strong>Saturday, Mar 28</strong>Bikes · Food · RC Cars · Karaoke</div>
-      <div><strong>Format</strong>Come to any part</div>
+      <div><strong>Format</strong>Two days of fun</div>
     </div>
   </div>
 </section>
@@ -545,7 +362,10 @@
 
   <!-- INTRO -->
   <div class="intro">
-    <p>No big plans, no obligations. Just a birthday spread across two days — <strong>karting on Friday</strong>, then a <strong>bike ride, food, RC cars and karaoke on Saturday</strong>. Come for one thing or all of it. Let me know below so I have a rough headcount.</p>
+    <p>The birthday weekend is done and it was <strong>absolutely amazing</strong>. Thank you to everyone who showed up — whether it was for <strong>karting on Friday</strong>, the <strong>bike ride, food, RC cars or karaoke on Saturday</strong>. You made it special. Here's the video from that day.</p>
+    <div class="video-wrapper" style="margin-top: 2rem;">
+      <iframe src="https://www.youtube.com/embed/xvemaFGv8jU?rel=0" title="Paweł's Birthday — March 2026" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
   </div>
 
   <!-- TIMELINE -->
@@ -647,220 +467,15 @@
     </div>
   </section>
 
-  <!-- COSTS -->
-  <section class="costs">
-    <p class="section-label">What's covered</p>
-    <div class="costs-grid">
-      <div class="cost-cell">
-        <div class="cost-cell-label">Paweł covers</div>
-        <ul class="cost-items">
-          <li>Karaoke room (Zodiak, Kakadu)</li>
-          <li>Appetizers at Poniatówka (hummus, spreads, bites)</li>
-          <li>His own go-kart session</li>
-        </ul>
-      </div>
-      <div class="cost-cell">
-        <div class="cost-cell-label">On you</div>
-        <ul class="cost-items">
-          <li>Go-kart session</li>
-          <li>Bike (free with Veturilo)</li>
-          <li>Drinks throughout</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- RSVP -->
-  <section class="rsvp" id="rsvp">
-    <p class="section-label">RSVP</p>
-    <p class="rsvp-note">Drop-in is totally fine — but a rough headcount helps. Takes 30 seconds.</p>
-
-    <form id="rsvpForm">
-      <div class="form-grid">
-
-        <div class="form-row">
-          <label class="form-label" for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="Your name" required>
-        </div>
-
-        <div class="form-row">
-          <label class="form-label" for="contact">Contact</label>
-          <input type="text" id="contact" name="contact" placeholder="Phone or email (optional)">
-        </div>
-
-        <div class="form-row full">
-          <label class="form-label" for="activities">Coming to</label>
-          <div class="checkbox-group">
-            <label class="check-item">
-              <input type="checkbox" name="activities" value="karting"> Fri · Go-karts (20:00)
-            </label>
-            <label class="check-item">
-              <input type="checkbox" name="activities" value="coffee"> Sat · Coffee (14:00)
-            </label>
-            <label class="check-item">
-              <input type="checkbox" name="activities" value="bikes"> Sat · Bikes (~15:00)
-            </label>
-            <label class="check-item">
-              <input type="checkbox" name="activities" value="food"> Sat · Food at Poniatówka (~15:30)
-            </label>
-            <label class="check-item">
-              <input type="checkbox" name="activities" value="rccars"> Sat · RC Cars (~16:00)
-            </label>
-            <label class="check-item">
-              <input type="checkbox" name="activities" value="karaoke"> Sat · Karaoke (18:40)
-            </label>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <label class="form-label" for="dietary">Dietary</label>
-          <input type="text" id="dietary" name="dietary" placeholder="Any restrictions? (optional)">
-        </div>
-
-        <div class="form-row full">
-          <label class="form-label" for="note">Note</label>
-          <textarea id="note" name="note" rows="2" placeholder="Anything else..."></textarea>
-        </div>
-
-      </div>
-
-      <div class="submit-row">
-        <button type="submit" class="btn">Send RSVP →</button>
-      </div>
-    </form>
-
-    <!-- SUCCESS STATE -->
-    <div id="successState" style="display:none; border: 1px solid var(--border); padding: 2rem; margin-top: 1rem;">
-      <div style="font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray); margin-bottom:1rem;">Confirmed</div>
-      <div style="font-family:'Bebas Neue',sans-serif; font-size:36px; line-height:1; margin-bottom:1rem;">See you there.</div>
-      <div style="font-size:13px; color:var(--gray); line-height:1.8;">
-        Thanks for letting me know — your RSVP is in.<br>
-        If anything changes, just message me directly.
-      </div>
-      <div style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid var(--border); font-size:11px; color:#444; letter-spacing:0.08em; text-transform:uppercase;">
-        Paweł's Birthday · Warsaw · March 2026
-      </div>
-    </div>
-
-    <!-- ERROR STATE -->
-    <div id="errorState" style="display:none; border: 1px solid #3a1a1a; padding: 2rem; margin-top: 1rem;">
-      <div style="font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:#884444; margin-bottom:1rem;">Error</div>
-      <div style="font-size:14px; color:#ccc; line-height:1.8; margin-bottom:1.5rem;">
-        Something went wrong sending your RSVP.<br>
-        Please try again or message Paweł directly.
-      </div>
-      <button class="btn" onclick="retryForm()" style="background:transparent; color:var(--white); border:1px solid var(--border);">Try again</button>
-    </div>
-
-  </section>
 
 </main>
-
-<!-- CONFIRMATION MODAL -->
-<div id="confirmModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:100; display:none; align-items:center; justify-content:center; padding:2rem;">
-  <div style="background:var(--black); border:1px solid #333; max-width:440px; width:100%; padding:2rem;">
-    <div style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gray); margin-bottom:1.5rem;">Confirm RSVP</div>
-    <div id="confirmSummary" style="font-size:13px; color:#bbb; line-height:2; margin-bottom:2rem; border-top:1px solid var(--border); padding-top:1.25rem;"></div>
-    <div style="display:flex; gap:12px; justify-content:flex-end;">
-      <button class="btn" onclick="closeModal()" style="background:transparent; color:var(--gray); border:1px solid var(--border);">Edit</button>
-      <button class="btn" id="confirmBtn" onclick="submitForm()">Confirm →</button>
-    </div>
-  </div>
-</div>
 
 <footer>
   <span>Paweł's Birthday · Warsaw · March 2026</span>
   <a href="https://arpl.dev" target="_blank">arpl.dev</a>
 </footer>
 
-<script>
-  const activityLabels = {
-    karting: 'Fri · Go-karts (20:00)',
-    coffee:  'Sat · Coffee (14:00)',
-    bikes:   'Sat · Bikes (~15:00)',
-    food:    'Sat · Food at Poniatówka (~15:30)',
-    rccars:  'Sat · RC Cars (~16:00)',
-    karaoke: 'Sat · Karaoke (18:40)'
-  };
 
-  let pendingData = null;
-
-  document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const form = e.target;
-    const name = form.querySelector('#name').value.trim();
-    const activities = [...form.querySelectorAll('input[name="activities"]:checked')]
-      .map(el => activityLabels[el.value] || el.value);
-    const dietary = form.querySelector('#dietary').value.trim();
-    const note = form.querySelector('#note').value.trim();
-
-    // Build summary
-    let summary = '<div style="display:grid; gap:4px;">';
-    summary += row('Name', name || '—');
-    summary += row('Coming to', activities.length ? activities.join('<br>') : 'Not specified');
-    if (dietary) summary += row('Dietary', dietary);
-    if (note)    summary += row('Note', note);
-    summary += '</div>';
-
-    document.getElementById('confirmSummary').innerHTML = summary;
-
-    // Store form data
-    const fd = new FormData(form);
-    fd.set('activities', activities.join(', '));
-    pendingData = fd;
-
-    // Show modal
-    const modal = document.getElementById('confirmModal');
-    modal.style.display = 'flex';
-  });
-
-  function row(label, value) {
-    return '<div style="display:grid; grid-template-columns:100px 1fr; gap:12px; padding:6px 0; border-bottom:1px solid #1a1a1a; font-size:12px;">' +
-      '<span style="color:#555; text-transform:uppercase; letter-spacing:0.08em; font-size:10px; padding-top:2px;">' + label + '</span>' +
-      '<span style="color:#ccc;">' + value + '</span>' +
-    '</div>';
-  }
-
-  function closeModal() {
-    document.getElementById('confirmModal').style.display = 'none';
-  }
-
-  async function submitForm() {
-    const btn = document.getElementById('confirmBtn');
-    btn.textContent = 'Sending…';
-    btn.disabled = true;
-
-    try {
-      const res = await fetch('https://formspree.io/f/mreobgpk', {
-        method: 'POST',
-        body: pendingData,
-        headers: { 'Accept': 'application/json' }
-      });
-      closeModal();
-      if (res.ok) {
-        document.getElementById('rsvpForm').style.display = 'none';
-        document.getElementById('successState').style.display = 'block';
-      } else {
-        throw new Error();
-      }
-    } catch {
-      closeModal();
-      btn.textContent = 'Confirm →';
-      btn.disabled = false;
-      document.getElementById('errorState').style.display = 'block';
-    }
-  }
-
-  function retryForm() {
-    document.getElementById('errorState').style.display = 'none';
-    document.getElementById('rsvpForm').style.display = 'block';
-  }
-
-  // Close modal on backdrop click
-  document.getElementById('confirmModal').addEventListener('click', function(e) {
-    if (e.target === this) closeModal();
-  });
-</script>
 
 </body>
 </html>
