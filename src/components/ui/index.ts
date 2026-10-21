@@ -1,4 +1,4 @@
-export { Button } from './Button';
-export { Card, CardContent } from './Card';
-export { Section, SectionHeader } from './Section';
-export { FilterButton, FilterGroup } from './FilterButton';
+export { Section, Swatch } from './Section';
+export type { Pattern } from './Section';
+export { FilterGroup } from './FilterButton';
+export { Scramble } from './Scramble';

@@ -59,6 +59,34 @@ export interface TechStack {
 
 export const hackathons: Hackathon[] = [
   {
+    title: "Kobolt",
+    category: "robotics",
+    featured: true,
+    achievements: [
+      "HackLab Robotics Berlin Hackathon 2026",
+      "Gemini Robotics-ER 1.6 as the brain, NormaCore to drive the arm",
+      "ai-coustics Voice Focus to hear commands in a noisy hall",
+      "Team: Karim Taher, Ilja Weber, Ming Yip C."
+    ],
+    description: "Can an LLM control a robot? An autonomous robotic arm driven by voice, with a Gemini robotics model planning the moves.",
+    link: null,
+    video: "https://youtu.be/PILwXTECAoo"
+  },
+  {
+    title: "Reins",
+    category: "robotics",
+    featured: true,
+    achievements: [
+      "Alien Bazaar Hackathon 2026",
+      "Approve or reject robot actions with gestures on Snap Spectacles, or by voice",
+      "Voice isolation and acoustic awareness with ai-coustics Quail and Tyto",
+      "Team: Artur Habuda, Jone Steinhoff, Jonathan Tybirk, Christoffer Shane Rask"
+    ],
+    description: "A reward loop for the LLM harness around VLA models, tested on Pollen Robotics Reachy and Unitree R1.",
+    link: null,
+    video: null
+  },
+  {
     title: "Spindra",
     category: "ai",
     featured: true,
@@ -305,6 +333,68 @@ export const projects: Project[] = [
     image: "/images/straighty.png",
   },
   {
+    title: "Pullz",
+    description: "Pull-up coach that counts reps, judges your form and keeps you off your phone between sets. Built with TypeSafe AI jev, Gemini 3.8 Live and ai-coustics Tyto, following Straighty and Zero-G.",
+    type: "AI/ML",
+    featured: true,
+    link: "https://x.com/GrungeCoder",
+    language: "Computer Vision"
+  },
+  {
+    title: "Rhetor",
+    description: "AI pitch coach that interrupts you. Gemini Live streams your voice and video, flags filler words and pace in real time, and simulates tough audiences like a skeptical investor.",
+    type: "AI/ML",
+    featured: true,
+    language: "TypeScript",
+    github: "https://github.com/LachPawel/Rhetor"
+  },
+  {
+    title: "Blacoustic",
+    description: "Real-time speech enhancement for Google Meet. AirPods mic → ai-coustics SDK → BlackHole virtual device, with automatic sample-rate conversion.",
+    type: "AI/ML",
+    featured: true,
+    language: "Rust",
+    github: "https://github.com/LachPawel/blacoustic"
+  },
+  {
+    title: "apic",
+    description: "Fully local voice pipeline for Apple Silicon: whisper-rs STT, on-device LLM, Kokoro TTS. Benchmarked at 661 ms STT and 146 ms TTS, no cloud, no API keys.",
+    type: "AI/ML",
+    language: "Rust",
+    github: "https://github.com/LachPawel/apic"
+  },
+  {
+    title: "Realtime Voice Agent in 60 Seconds",
+    description: "Minimal starter for OpenAI's gpt-realtime-2. WebRTC audio in the browser, a 40-line Python server that only adds the API key, function calling in one JS object.",
+    type: "AI/ML",
+    language: "HTML/Python",
+    github: "https://github.com/LachPawel/gpt2-rt"
+  },
+  {
+    title: "FormKit",
+    description: "Started as a handstand trainer that plays Michael Jackson when you forget the pelvis twist, then open-sourced as an iOS template for body pose apps. Apple Vision at 30 fps, skeleton overlay, protocol-based rep counter.",
+    type: "mobile",
+    language: "Swift",
+    github: "https://github.com/LachPawel/FormKit",
+    image: "/images/formkit.png"
+  },
+  {
+    title: "Aporia",
+    description: "Live GitHub activity galaxy. Every repo is a glowing planet in a Three.js scene that lights up on new commits, made for hackathon screens and dev streams.",
+    type: "community",
+    link: "https://aporia-hack.vercel.app",
+    language: "TypeScript",
+    github: "https://github.com/LachPawel/aporia"
+  },
+  {
+    title: "iTARS",
+    description: "TARS from Interstellar in augmented reality. Place it on any surface with ARKit and talk to it through ElevenLabs conversational AI.",
+    type: "mobile",
+    link: "https://www.youtube.com/watch?v=WhkKBo74Hq8",
+    language: "Swift",
+    github: "https://github.com/ARPLearn/iTARS"
+  },
+  {
     title: "Arduino RC Car",
     description: "DIY remote-controlled car built with Arduino. Complete tutorial with 15k+ views on dev.to helping makers build their own.",
     type: "robotics",
@@ -441,11 +531,32 @@ export const content: ContentItem[] = [
     image: "/images/depth.png"
   },
   {
+    title: "Tyto - Audio Insight for the Voice AI",
+    platform: "YouTube",
+    type: "video",
+    link: "https://www.youtube.com/watch?v=RjDujIWAkuA",
+    views: "Real-time audio quality scoring for voice agents at ai-coustics"
+  },
+  {
+    title: "The Robots Are Pushing Back: Claude 3.7 Posture Police",
+    platform: "YouTube",
+    type: "video",
+    link: "https://www.youtube.com/watch?v=LbgSKqaUsos",
+    views: "600+"
+  },
+  {
+    title: "What Happens When a $2 Cactus Gets an AI Brain?",
+    platform: "YouTube",
+    type: "video",
+    link: "https://www.youtube.com/watch?v=rP5ospQdvWM",
+    views: "250+"
+  },
+  {
     title: "It's ALIVE! I Gave My Robot Dog an AI Brain",
     platform: "YouTube",
     type: "video",
     link: "https://www.youtube.com/watch?v=2VGDe0nQBYM",
-    views: "24k+"
+    views: "25k+"
   },
   {
     title: "How to Build your own RC Car with Arduino - ArduCar",
@@ -473,14 +584,14 @@ export const content: ContentItem[] = [
     platform: "YouTube",
     type: "video",
     link: "https://www.youtube.com/watch?v=8YEK-4KBU5o",
-    views: "1.5k+"
+    views: "3.5k+"
   },
   {
     title: "How to Create Prover and Verifier App on zkVM",
     platform: "YouTube",
     type: "video",
     link: "https://www.youtube.com/watch?v=mQQePxfE1sE",
-    views: "500+"
+    views: "800+"
   }
 ];
 

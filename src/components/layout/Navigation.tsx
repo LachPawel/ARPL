@@ -1,159 +1,54 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Github, Youtube, Linkedin, Moon, Sun, Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../../context/ThemeContext';
-import { getBorderColor, getTextColor } from '../../theme';
+import { sound, toggleSound, useSoundEnabled } from '../../lib/sound';
 
 export const Navigation: React.FC = () => {
   const { isDark, toggleTheme } = useTheme();
-  const location = useLocation();
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
-  const isOnBlogPage = location.pathname.startsWith('/blog');
+  const soundOn = useSoundEnabled();
+  const { pathname } = useLocation();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const SocialLinks = () => (
-    <>
-      <a
-        href="https://github.com/LachPawel"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="transition-opacity hover:opacity-50"
-        style={{ color: getTextColor(isDark, 'primary') }}
-      >
-        <Github size={18} />
-      </a>
-      <a
-        href="https://youtube.com/@arplearn"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="transition-opacity hover:opacity-50"
-        style={{ color: getTextColor(isDark, 'primary') }}
-      >
-        <Youtube size={18} />
-      </a>
-      <a
-        href="https://www.linkedin.com/in/pawelach/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="transition-opacity hover:opacity-50"
-        style={{ color: getTextColor(isDark, 'primary') }}
-      >
-        <Linkedin size={18} />
-      </a>
-    </>
-  );
+  const path = `~/arpl${pathname === '/' ? '' : pathname}`;
+  const item = 'uppercase text-muted hover:text-fg transition-colors';
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className={`fixed top-0 w-full z-40 transition-all duration-300 ${
-        isScrolled ? 'backdrop-blur-sm border-b py-3 sm:py-4' : 'bg-transparent py-4 sm:py-6'
-      }`}
-      style={
-        isScrolled
-          ? {
-              backgroundColor: isDark ? 'rgba(0, 0, 0, 0.8)' : 'rgba(255, 255, 255, 0.8)',
-              borderBottom: `1px solid ${getBorderColor(isDark)}`,
-            }
-          : {}
-      }
-    >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between items-center">
-        <Link to="/" className="text-sm font-light tracking-wide">
-          Pawel Lach
+    <nav className="sticky top-0 z-40 bg-bg border-b border-line">
+      <div className="max-w-5xl mx-auto px-4 sm:px-8 h-14 flex items-center justify-between gap-4 text-xs uppercase tracking-[0.15em]">
+        <Link to="/" className="truncate normal-case tracking-normal text-sm" onClick={sound.click}>
+          <span className="text-muted">pawel@</span>
+          {path}
+          <span className="cursor" />
         </Link>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-6">
-          {!isOnBlogPage && (
-            <Link
-              to="/blog"
-              className="text-sm font-light transition-opacity hover:opacity-50"
-              style={{ color: getTextColor(isDark, 'primary') }}
-            >
-              Blog
-            </Link>
-          )}
-          
-          <SocialLinks />
-
+        <div className="flex items-center gap-4 sm:gap-6 shrink-0">
+          <Link to="/#work" className={`${item} hidden sm:inline`} onMouseEnter={sound.tick} onClick={sound.click}>
+            Work
+          </Link>
+          <Link to="/blog" className={item} onMouseEnter={sound.tick} onClick={sound.click}>
+            Blog
+          </Link>
           <button
-            onClick={toggleTheme}
-            className="transition-opacity hover:opacity-50"
-            style={{ color: getTextColor(isDark, 'primary') }}
-            aria-label="Toggle theme"
+            onClick={toggleSound}
+            onMouseEnter={sound.tick}
+            className={item}
+            aria-pressed={soundOn}
+            title="Toggle sound (S)"
           >
-            {isDark ? <Sun size={18} /> : <Moon size={18} />}
+            Snd:{soundOn ? 'on' : 'off'}
           </button>
-        </div>
-
-        {/* Mobile Navigation */}
-        <div className="md:hidden flex items-center space-x-4">
           <button
-            onClick={toggleTheme}
-            className="transition-opacity hover:opacity-50"
-            style={{ color: getTextColor(isDark, 'primary') }}
-            aria-label="Toggle theme"
+            onClick={() => {
+              sound.swap();
+              toggleTheme();
+            }}
+            onMouseEnter={sound.tick}
+            className={item}
+            title="Toggle theme (T)"
           >
-            {isDark ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
-
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="transition-opacity hover:opacity-50"
-            style={{ color: getTextColor(isDark, 'primary') }}
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            {isDark ? 'Light' : 'Dark'}
           </button>
         </div>
       </div>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden backdrop-blur-sm border-t"
-            style={{
-              backgroundColor: isDark ? 'rgba(0, 0, 0, 0.95)' : 'rgba(255, 255, 255, 0.95)',
-              borderTop: `1px solid ${getBorderColor(isDark)}`,
-            }}
-          >
-            <div className="px-4 py-6 space-y-4">
-              {!isOnBlogPage && (
-                <Link
-                  to="/blog"
-                  className="block text-center text-sm font-light"
-                  style={{ color: getTextColor(isDark, 'primary') }}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Blog
-                </Link>
-              )}
-              <div className="flex items-center justify-center space-x-6">
-                <SocialLinks />
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.nav>
+    </nav>
   );
 };

@@ -4,33 +4,35 @@
 
 **Minimalism through reduction. Clarity through contrast.**
 
-This portfolio embraces a brutalist, content-first approach with pure black and white aesthetic.
+A monospace, terminal-flavoured, content-first layout. Black and white only, with patterns instead of colours.
 
 ## Quick Reference
 
 ### Colors
-- Dark Mode: Black bg (#000), white text (#fff)
-- Light Mode: White bg (#fff), black text (#000)
-- Grays: #999 (secondary), #666 (tertiary), #222/#e5e5e5 (borders)
+Defined as CSS variables in `src/index.css`, exposed to Tailwind as `bg`, `fg`, `muted`, `faint`, `line`.
+- Dark (default): `#0b0b0b` bg, `#ececec` fg
+- Light: `#f3f3ef` bg, `#111111` fg
+- Theme is set via `data-theme` on `<html>`
 
 ### Typography
-- Font: System font stack
-- Weights: Light (400) for everything, Semibold (600) for headers
-- Scale: xs(12px) → 6xl(60px)
+- IBM Plex Mono for everything, IBM Plex Sans for blog body text
+- `.kicker`: 12px, uppercase, 0.2em tracking, used for labels and section titles
+- Titles bold, body regular
 
-### Spacing
-- Scale: xs(4px) → 5xl(128px)
-- Sections: py-16 sm:py-20 lg:py-24
+### Patterns
+Legend swatches and the "At a glance" bar use `.pat-solid` (hackathon), `.pat-dots` (project), `.pat-lines` (content), plus `.pat-gray` and `.pat-dashed`.
+
+### Layout
+- Content column `max-w-5xl`, rows use a `160px / 1fr` grid on `sm+`
+- Section header: kicker title above a full-width `border-fg` rule
 
 ### Interactions
-- Hover: opacity-70 (no color changes)
-- Transitions: opacity only
-- Animations: Minimal fade-in
-
-## Full Documentation
-
-See theme configuration in `src/theme/index.ts` for complete design tokens.
+- Hover: text goes from `muted` to `fg`
+- Text scramble on section titles (on view) and row titles (on hover), via `<Scramble>`
+- Synthesized UI sounds in `src/lib/sound.ts`, off by default
+- Shortcuts: `T` theme, `S` sound
+- All motion is disabled under `prefers-reduced-motion`
 
 ---
 
-**Last updated: January 2026**
+**Last updated: October 2026**

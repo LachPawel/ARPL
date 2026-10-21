@@ -34,7 +34,7 @@ export function markdownToHtml(markdown: string): string {
 
   // YouTube embeds - must come before regular links
   // Handle pattern: [![title](thumbnail)](youtube-url)
-  html = html.replace(/\[!\[([^\]]+)\]\(https:\/\/img\.youtube\.com\/vi\/([a-zA-Z0-9_-]+)\/[^\)]+\)\]\(https:\/\/www\.youtube\.com\/watch\?v=\2\)/gim, 
+  html = html.replace(/\[!\[([^\]]+)\]\(https:\/\/img\.youtube\.com\/vi\/([a-zA-Z0-9_-]+)\/[^)]+\)\]\(https:\/\/www\.youtube\.com\/watch\?v=\2\)/gim, 
     '<div class="youtube-embed"><iframe width="100%" height="400" src="https://www.youtube.com/embed/$2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>');
   
   // Handle pattern: ![title](youtube-watch-url)

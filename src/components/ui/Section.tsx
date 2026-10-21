@@ -1,67 +1,33 @@
 import React, { ReactNode } from 'react';
-import { motion } from 'framer-motion';
-import { getBackground } from '../../theme';
+import { Scramble } from './Scramble';
 
 interface SectionProps {
   id?: string;
-  children: ReactNode;
-  isDark?: boolean;
-  variant?: 'primary' | 'secondary';
-  className?: string;
-}
-
-export const Section: React.FC<SectionProps> = ({
-  id,
-  children,
-  isDark = true,
-  variant = 'primary',
-  className = '',
-}) => {
-  return (
-    <section
-      id={id}
-      className={`py-16 sm:py-20 lg:py-24 px-4 sm:px-6 ${className}`}
-      style={{
-        backgroundColor: variant === 'secondary' ? getBackground(isDark, 'secondary') : undefined,
-      }}
-    >
-      <div className="max-w-6xl mx-auto">{children}</div>
-    </section>
-  );
-};
-
-interface SectionHeaderProps {
-  icon?: React.ReactNode;
   title: string;
-  description?: string;
-  isDark?: boolean;
+  /** Optional element on the right side of the header rule */
+  aside?: ReactNode;
+  children: ReactNode;
   className?: string;
 }
 
-export const SectionHeader: React.FC<SectionHeaderProps> = ({
-  icon,
-  title,
-  description,
-  isDark = true,
-  className = '',
-}) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      className={`mb-8 sm:mb-12 text-center sm:text-left ${className}`}
-    >
-      <h2 className="text-2xl sm:text-3xl font-bold mb-2 flex items-center justify-center sm:justify-start gap-3">
-        {icon && <span className={`${isDark ? 'text-gray-500' : 'text-gray-600'}`}>{icon}</span>}
-        {title}
+export const Section: React.FC<SectionProps> = ({ id, title, aside, children, className = '' }) => (
+  <section id={id} className={`scroll-mt-20 pt-16 sm:pt-24 ${className}`}>
+    <header className="flex items-baseline justify-between gap-4 border-b border-fg pb-4 mb-8">
+      <h2 className="kicker font-semibold">
+        <Scramble text={title} onView />
       </h2>
-      {description && (
-        <p className={`${isDark ? 'text-gray-500' : 'text-gray-600'} text-sm sm:text-base`}>
-          {description}
-        </p>
-      )}
-    </motion.div>
-  );
-};
+      {aside && <div className="kicker text-muted">{aside}</div>}
+    </header>
+    {children}
+  </section>
+);
+
+/** Small uppercase label with a pattern swatch, like a legend entry */
+export const Swatch: React.FC<{ pattern: Pattern; className?: string }> = ({ pattern, className = '' }) => (
+  <span
+    aria-hidden
+    className={`inline-block w-5 h-5 shrink-0 border border-faint pat-${pattern} ${className}`}
+  />
+);
+
+export type Pattern = 'solid' | 'dots' | 'lines' | 'gray' | 'dashed';

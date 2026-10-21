@@ -6,10 +6,9 @@ A minimalistic portfolio showcasing software engineering work, hackathon victori
 
 **Minimal. Monochrome. Content-First.**
 
-- Pure black and white color scheme
-- Light typography with generous whitespace
-- No accent colors or heavy animations
-- Focus on content and readability
+- Pure black and white, monospace (IBM Plex Mono)
+- Patterns instead of colours
+- Small geek touches: text scramble, live clock, optional synthesized UI sounds
 - Responsive across all devices
 
 ## Project Structure
@@ -23,7 +22,7 @@ src/
 ├── context/            # Theme context for dark/light mode
 ├── data/               # Portfolio and blog data
 ├── pages/              # Route pages (Home, Blog, BlogPost)
-├── theme/              # Design tokens and style guide
+├── lib/                # UI sound engine
 ├── App.tsx             # Main app with routing
 └── main.tsx           # Entry point
 
@@ -33,7 +32,6 @@ src/
 
 - **React** with TypeScript
 - **React Router** for navigation
-- **Framer Motion** for subtle animations
 - **Tailwind CSS** for styling
 - **Vite** for build tooling
 
@@ -55,61 +53,20 @@ npm run preview
 
 ## Pages
 
-- **Home** (`/`) - Minimal landing with links to sections
+- **Home** (`/`) - Intro, work at a glance, writing, community
 - **Blog** (`/blog`) - Article listing with filtering
 - **Blog Post** (`/blog/:id`) - Individual article view
 
-## Sections
+## Design
 
-All sections are accessible from the home page:
-
-- **Hackathons** - 15+ competition victories
-- **Speaking** - Community involvement and talks
-- **Projects** - Open source and personal projects
-- **Content** - Videos, articles, and tutorials
-
-## Design Tokens
-
-All design tokens are centralized in `src/theme/index.ts`:
-
-- **Colors**: Pure black/white with subtle grays
-- **Typography**: Light font weights, system fonts
-- **Spacing**: Consistent scale from xs to 5xl
-- **Transitions**: Subtle opacity changes
-
-## Theme
-
-Toggle between dark and light modes:
-- **Dark**: Black background, white text
-- **Light**: White background, black text
-
-Both modes maintain perfect contrast and readability.
+See `STYLEGUIDE.md`. Tokens live as CSS variables in `src/index.css`; components use the Tailwind names `bg`, `fg`, `muted`, `faint`, `line`.
 
 ## Development
 
 ### Adding New Content
 
-1. **Blog Posts**: Edit `src/data/blog.ts`
-2. **Projects**: Edit `src/data/portfolio.ts`
-3. **Hackathons**: Edit `src/data/portfolio.ts`
-
-### Creating Components
-
-All components use the centralized theme for consistency:
-
-```tsx
-import { getTextColor, getBrandColor } from '../theme';
-
-const MyComponent = () => {
-  const { isDark } = useTheme();
-  
-  return (
-    <div style={{ color: getTextColor(isDark, 'primary') }}>
-      Content
-    </div>
-  );
-};
-```
+1. **Blog Posts**: Add a markdown file in `src/data/posts/` and register it in `src/data/posts.ts`
+2. **Projects / Hackathons / Content**: Edit `src/data/portfolio.ts`
 
 ## Deployment
 

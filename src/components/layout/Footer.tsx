@@ -1,67 +1,38 @@
 import React from 'react';
-import { Github, Youtube, Linkedin } from 'lucide-react';
-import { useTheme } from '../../context/ThemeContext';
-import { getTextColor, getBorderColor } from '../../theme';
+import { sound } from '../../lib/sound';
 
-export const Footer: React.FC = () => {
-  const { isDark } = useTheme();
+const socials = [
+  { label: 'GitHub', url: 'https://github.com/LachPawel' },
+  { label: 'YouTube', url: 'https://youtube.com/@arplearn' },
+  { label: 'LinkedIn', url: 'https://www.linkedin.com/in/pawelach/' },
+];
 
-  return (
-    <footer 
-      className="border-t py-12 px-4 sm:px-6 mt-20"
-      style={{ borderColor: getBorderColor(isDark) }}
-    >
-      <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col items-center gap-6">
-          {/* Social Links */}
-          <div className="flex items-center gap-6">
+export const Footer: React.FC = () => (
+  <footer className="w-full max-w-5xl mx-auto px-4 sm:px-8 mt-24 sm:mt-32">
+    <div className="border-t border-line py-10 flex flex-col sm:flex-row gap-6 sm:items-end justify-between text-sm">
+      <div className="space-y-2">
+        <a href="mailto:pawel@arpl.dev" className="link" onClick={sound.click}>
+          pawel@arpl.dev
+        </a>
+        <div className="flex flex-wrap gap-x-5 gap-y-1">
+          {socials.map((s) => (
             <a
-              href="https://github.com/LachPawel"
+              key={s.label}
+              href={s.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-opacity hover:opacity-50"
-              style={{ color: getTextColor(isDark, 'primary') }}
+              className="text-muted hover:text-fg transition-colors"
+              onMouseEnter={sound.tick}
             >
-              <Github size={20} />
+              {s.label} ↗
             </a>
-            <a
-              href="https://youtube.com/@arplearn"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-opacity hover:opacity-50"
-              style={{ color: getTextColor(isDark, 'primary') }}
-            >
-              <Youtube size={20} />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/pawelach/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-opacity hover:opacity-50"
-              style={{ color: getTextColor(isDark, 'primary') }}
-            >
-              <Linkedin size={20} />
-            </a>
-          </div>
-
-          {/* Email */}
-          <a 
-            href="mailto:pawel@arpl.dev"
-            className="text-sm font-light hover:opacity-70 transition-opacity"
-            style={{ color: getTextColor(isDark, 'secondary') }}
-          >
-            pawel@arpl.dev
-          </a>
-
-          {/* Copyright */}
-          <p 
-            className="text-xs font-light"
-            style={{ color: getTextColor(isDark, 'tertiary') }}
-          >
-            © {new Date().getFullYear()} ARPL. All rights reserved.
-          </p>
+          ))}
         </div>
       </div>
-    </footer>
-  );
-};
+      <div className="text-faint text-xs space-y-1 sm:text-right">
+        <p className="hidden sm:block">[T] theme · [S] sound</p>
+        <p>© {new Date().getFullYear()} ARPL</p>
+      </div>
+    </div>
+  </footer>
+);
