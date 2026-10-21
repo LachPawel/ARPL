@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { sound } from '../../lib/sound';
 
 const GLYPHS = '!<>-_\\/[]{}=+*^?#01ABCDEFX';
 
@@ -14,8 +13,6 @@ interface ScrambleProps {
   onHover?: boolean;
   /** Scramble whenever this flips to true, e.g. when a parent row is hovered */
   active?: boolean;
-  /** Play a faint chatter while decoding */
-  audible?: boolean;
   className?: string;
 }
 
@@ -28,7 +25,6 @@ export const Scramble: React.FC<ScrambleProps> = ({
   onView = false,
   onHover = false,
   active = false,
-  audible = false,
   className = '',
 }) => {
   const [display, setDisplay] = useState(text);
@@ -49,11 +45,10 @@ export const Scramble: React.FC<ScrambleProps> = ({
         out += text[i] === ' ' ? ' ' : GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
       }
       setDisplay(out);
-      if (audible && Math.random() < 0.35) sound.chatter();
       if (progress < 1) frame.current = requestAnimationFrame(step);
     };
     frame.current = requestAnimationFrame(step);
-  }, [text, audible]);
+  }, [text]);
 
   useEffect(() => {
     setDisplay(text);

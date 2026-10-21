@@ -95,12 +95,6 @@ export const sound = {
       tone(440, 0, 0.06, 0.04, 'triangle');
       tone(660, 0.05, 0.06, 0.04, 'triangle');
     }),
-
-  /** Very quiet chatter while scrambled text resolves. */
-  chatter: () =>
-    play(() => {
-      tone(1200 + Math.random() * 1600, 0, 0.012, 0.012);
-    }),
 };
 
 export const isSoundOn = () => enabled;
