@@ -5,6 +5,7 @@ import buildingWillBeDifferentMd from './posts/building-will-be-different.md?raw
 import judgeByDayHackerByNightMd from './posts/judge-by-day-hacker-by-night.md?raw';
 import whereDidAllTheSoulGoMd from './posts/where-did-all-the-sould-go.md?raw';
 import areElectricCarsFunMd from './posts/are-electric-cars-fun.md?raw';
+import areWeBecomingTheAudienceAgainMd from './posts/are-we-becoming-the-audience-again.md?raw';
 
 function parseMarkdownPost(markdown: string, id: string): BlogPost {
   const lines = markdown.split('\n');
@@ -58,6 +59,10 @@ function parseMarkdownPost(markdown: string, id: string): BlogPost {
       date: '2026-05-31',
       tags: ['Thoughts', 'Cars', 'Tech'],
     },
+    'are-we-becoming-the-audience-again': {
+      date: '2026-10-21',
+      tags: ['Thoughts', 'AI', 'Focus'],
+    },
   };
   
   const config = customConfig[id] || { date: '2026-01-03' };
@@ -76,6 +81,7 @@ function parseMarkdownPost(markdown: string, id: string): BlogPost {
 }
 
 export const blogPosts: BlogPost[] = [
+  parseMarkdownPost(areWeBecomingTheAudienceAgainMd, 'are-we-becoming-the-audience-again'),
   parseMarkdownPost(areElectricCarsFunMd, 'are-electric-cars-fun'),
   parseMarkdownPost(whereDidAllTheSoulGoMd, 'where-did-all-the-sould-go'),
   parseMarkdownPost(judgeByDayHackerByNightMd, 'judge-by-day-hacker-by-night'),
